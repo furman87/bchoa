@@ -1,0 +1,175 @@
+!!! 5
+%html
+
+%head
+    %meta{charset: "utf-8"}
+    %meta{"http-equiv": "X-UA-Compatible", content: "IE=edge"}
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1"}
+    %meta{name: "description", content: ""}
+    %meta{name: "author", content: ""}
+
+    %title Butler Creek HOA
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+
+%body
+    / Navigation
+    = render "layouts/menu"
+
+    / Header Carousel
+    .carousel.slide{id: "carousel", "data-ride": "carousel"}
+        / Indicators
+        %ol.carousel-indicators
+            %li.active{"data-target": "#carousel", "data-slide-to": "0"}
+            %li{"data-target": "#carousel", "data-slide-to": "1"}
+            %li{"data-target": "#carousel", "data-slide-to": "2"}
+
+        / Wrapper for slides
+        .carousel-inner
+            .item.active
+                %img{src: "http://lorempixel.com/1920/300/abstract/1"}
+                -# .carousel-caption
+                -#     %h4 Nick
+            .item
+                %img{src: "http://lorempixel.com/1920/300/abstract/2"}
+                -# .carousel-caption
+                -#     %h4 Sam
+            .item
+                %img{src: "http://lorempixel.com/1920/300/abstract/3"}
+                -# .carousel-caption
+                -#     %h4 Matthew
+
+        / Controls
+        %a.left.carousel-control{href: "#carousel", "role": "button", "data-slide": "prev"}
+            %span.glyphicon.glyphicon-chevron-left
+        %a.right.carousel-control{href: "#carousel", "role": "button", "data-slide": "next"}
+            %span.glyphicon.glyphicon-chevron-right
+
+    /
+    .container
+        / Marketing Icons Section
+        .row
+            .col-lg-12
+                %h1.page-header Welcome to Butler Creek
+                %p Butler Creek is located in Kennesaw, GA, about 30 minutes north of downtown Atlanta, close to I-75 and I-575, the mountains, the beach, and everything in between. We are a swim-tennis community of 144 homes located between Cobb Parkway and Stilesboro Road, convenient to shopping, the new Atlanta Braves Stadium, lakes, and the mountains. Butler Creek is a very social community, a true neighborhood where neighbors know neighbors, and people look out for one another.
+                %h3 Check out our latest news...
+            - @articles.each do |article|
+                .col-md-4
+                    .panel.panel-default
+                        .panel-heading
+                            %h4= article.title
+                        .panel-body.truncate
+                            %p= article.body
+                            = link_to "Learn More", article, class: "btn btn-default"
+
+        / Marketing Icons Section End
+
+    -#     <!-- /.row -->
+    -#
+    -#     <!-- Portfolio Section -->
+    -#     <div class="row">
+    -#         <div class="col-lg-12">
+    -#             <h2 class="page-header">Portfolio Heading</h2>
+    -#         </div>
+    -#         <div class="col-md-4 col-sm-6">
+    -#             <a href="portfolio-item.html">
+    -#                 <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
+    -#             </a>
+    -#         </div>
+    -#         <div class="col-md-4 col-sm-6">
+    -#             <a href="portfolio-item.html">
+    -#                 <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
+    -#             </a>
+    -#         </div>
+    -#         <div class="col-md-4 col-sm-6">
+    -#             <a href="portfolio-item.html">
+    -#                 <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
+    -#             </a>
+    -#         </div>
+    -#         <div class="col-md-4 col-sm-6">
+    -#             <a href="portfolio-item.html">
+    -#                 <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
+    -#             </a>
+    -#         </div>
+    -#         <div class="col-md-4 col-sm-6">
+    -#             <a href="portfolio-item.html">
+    -#                 <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
+    -#             </a>
+    -#         </div>
+    -#         <div class="col-md-4 col-sm-6">
+    -#             <a href="portfolio-item.html">
+    -#                 <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
+    -#             </a>
+    -#         </div>
+    -#     </div>
+    -#     <!-- /.row -->
+    -#
+    -#     <!-- Features Section -->
+    -#     <div class="row">
+    -#         <div class="col-lg-12">
+    -#             <h2 class="page-header">Modern Business Features</h2>
+    -#         </div>
+    -#         <div class="col-md-6">
+    -#             <p>The Modern Business template by Start Bootstrap includes:</p>
+    -#             <ul>
+    -#                 <li><strong>Bootstrap v3.2.0</strong>
+    -#                 </li>
+    -#                 <li>jQuery v1.11.0</li>
+    -#                 <li>Font Awesome v4.1.0</li>
+    -#                 <li>Working PHP contact form with validation</li>
+    -#                 <li>Unstyled page elements for easy customization</li>
+    -#                 <li>17 HTML pages</li>
+    -#             </ul>
+    -#             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</p>
+    -#         </div>
+    -#         <div class="col-md-6">
+    -#             <img class="img-responsive" src="http://placehold.it/700x450" alt="">
+    -#         </div>
+    -#     </div>
+    -#     <!-- /.row -->
+    -#
+    -#     <hr>
+    -#
+    -#     <!-- Call to Action Section -->
+    -#     <div class="well">
+    -#         <div class="row">
+    -#             <div class="col-md-8">
+    -#                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
+    -#             </div>
+    -#             <div class="col-md-4">
+    -#                 <a class="btn btn-lg btn-default btn-block" href="#">Call to Action</a>
+    -#             </div>
+    -#         </div>
+    -#     </div>
+    -#
+    -#     <hr>
+    -#
+    -#     <!-- Footer -->
+    -#     <footer>
+    -#         <div class="row">
+    -#             <div class="col-lg-12">
+    -#                 <p>Copyright &copy; Your Website 2014</p>
+    -#             </div>
+    -#         </div>
+    -#     </footer>
+    -#
+    -# </div>
+    -# <!-- /.container -->
+    -#
+    -# <!-- jQuery -->
+    -# <script src="js/jquery.js"></script>
+    -#
+    -# <!-- Bootstrap Core JavaScript -->
+    -# <script src="js/bootstrap.min.js"></script>
+    -#
+    -# <!-- Script to Activate the Carousel -->
+    -# <script>
+    -# $('.carousel').carousel({
+    -#     interval: 5000 //changes the speed
+    -# })
+    -# </script>
+
+</body>
+
+</html>

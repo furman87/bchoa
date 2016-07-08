@@ -1,0 +1,13 @@
+= simple_form_for(@article) do |f|
+    = f.error_notification
+
+    .form-inputs
+        = f.input :user_id
+        = f.input :title
+        = f.input :body
+        = f.input :tag_list, :label => "Tags* (separated by commas)", :input_html => { class: "", value: @article.tag_list.to_s }
+        = f.input :start_date
+        = f.input :end_date
+
+    .form-actions
+        = f.button :submit

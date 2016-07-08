@@ -1,0 +1,14 @@
+body {
+  padding-top: 50px;
+}
+
+.news {
+  height: 300px;
+}
+
+.truncate {
+  height: 300px;
+  // white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
