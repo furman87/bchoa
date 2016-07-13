@@ -1,4 +1,4 @@
-%nav.navbar.navbar-inverse.navbar-fixed-top{role:  "navigation"}
+%nav.navbar.navbar-inverse.navbar-fixed-top{id: "menu", role:  "navigation"}
     .container
         / Brand and toggle get grouped for better mobile display
         .navbar-header
@@ -7,7 +7,10 @@
                 %span.icon-bar
                 %span.icon-bar
                 %span.icon-bar
-            %a.navbar-brand{href: root_path } Butler Creek HOA
+            %a{href: root_path}
+                %img{id: "logo", src: "/images/bchoalogo.gif"}
+            %a.navbar-brand{href: root_path }
+                Butler Creek HOA
         / Collect the nav links, forms, and other content for toggling
         .collapse.navbar-collapse{id: "bs-example-navbar-collapse-1"}
             %ul.nav.navbar-nav.navbar-right
@@ -22,9 +25,9 @@
                         %li
                             %a{href: "board.html"} Board
                         %li
-                            %a{href: "board.html"} Block Captains
+                            %a{href: "block_captains.html"} Block Captains
                 %li
-                    %a{href: "news.html"} News
+                    %a{href: articles_path} News
                 %li.dropdown
                     -# %a.dropdown-toggle{:href => "#", "role" => "button", "data-toggle" => "dropdown", "data-target" => "#"}
                     %a.dropdown-toggle{href: "#", "data-toggle": "dropdown"}
@@ -35,10 +38,11 @@
                             %a{href: "newsletters.html"} Newsletters
                         %li
                             %a{href: "rules.html"} Facility Rules
-                        %li
-                            %a{href: "documents.html"} Documents
-                        %li
-                            %a{href: "residents.html"} Resident List
+                        - if user_signed_in?
+                            %li
+                                %a{href: "documents.html"} Documents
+                            %li
+                                %a{href: "residents.html"} Residents List
                         %li
                             %a{href: "architectural.html"} Architectural
                 %li.dropdown
@@ -60,11 +64,9 @@
                 %li
                     %a{href: "contact.html"} Contact
 
+                -# %ul.nav.navbar-nav.navbar-right
                 - if user_signed_in?
-                    %ul.nav.navbar-nav.navbar-right
-                        %li= link_to "Account", edit_user_registration_path
-                        %li= link_to "Sign Out", destroy_user_session_path, method: :delete
+                    %li= link_to "Account", edit_user_registration_path
+                    %li= link_to "Sign Out", destroy_user_session_path, method: :delete
                 -else
-                    %ul.nav.navbar-nav.navbar-right
-                        %li= link_to "Sign Up", new_user_registration_path
-                        %li= link_to "Sign In", new_user_session_path
+                    %li= link_to "Sign In", new_user_session_path

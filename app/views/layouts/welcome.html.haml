@@ -28,15 +28,15 @@
         / Wrapper for slides
         .carousel-inner
             .item.active
-                %img{src: "http://lorempixel.com/1920/300/abstract/1"}
+                %img{src: "images/bc_entrance_70.jpg"}
                 -# .carousel-caption
                 -#     %h4 Nick
             .item
-                %img{src: "http://lorempixel.com/1920/300/abstract/2"}
+                %img{src: "images/pool_70.jpg"}
                 -# .carousel-caption
                 -#     %h4 Sam
             .item
-                %img{src: "http://lorempixel.com/1920/300/abstract/3"}
+                %img{src: "images/tennis_70.jpg"}
                 -# .carousel-caption
                 -#     %h4 Matthew
 
@@ -47,23 +47,26 @@
             %span.glyphicon.glyphicon-chevron-right
 
     /
-    .container
-        / Marketing Icons Section
+    .container#main-container
         .row
-            .col-lg-12
+            .col-md-12
+                - flash.each do |name, msg|
+                    = content_tag :div, msg, class: "alert alert-info"
                 %h1.page-header Welcome to Butler Creek
                 %p Butler Creek is located in Kennesaw, GA, about 30 minutes north of downtown Atlanta, close to I-75 and I-575, the mountains, the beach, and everything in between. We are a swim-tennis community of 144 homes located between Cobb Parkway and Stilesboro Road, convenient to shopping, the new Atlanta Braves Stadium, lakes, and the mountains. Butler Creek is a very social community, a true neighborhood where neighbors know neighbors, and people look out for one another.
-                %h3 Check out our latest news...
-            - @articles.each do |article|
-                .col-md-4
-                    .panel.panel-default
-                        .panel-heading
-                            %h4= article.title
-                        .panel-body.truncate
-                            %p= article.body
-                            = link_to "Learn More", article, class: "btn btn-default"
+            .col-md-12
+                %h2 Check out our latest news...
+            .col-md-9
+                - @articles.each do |article|
+                    %h3= article.title
+                    %p.article-published= article.start_date.strftime("%B %-d, %Y")
+                    %p= simple_format(article.body)
+                    %p.article-expires Article will be shown until #{article.end_date.strftime("%B %-d, %Y")}
 
-        / Marketing Icons Section End
+    / Footer
+    -# %footer.footer
+    -#     .container
+    -#         %p.text-muted Copyright &copy; Butler Creek HOA #{Date.today.year}
 
     -#     <!-- /.row -->
     -#
@@ -145,14 +148,6 @@
     -#
     -#     <hr>
     -#
-    -#     <!-- Footer -->
-    -#     <footer>
-    -#         <div class="row">
-    -#             <div class="col-lg-12">
-    -#                 <p>Copyright &copy; Your Website 2014</p>
-    -#             </div>
-    -#         </div>
-    -#     </footer>
     -#
     -# </div>
     -# <!-- /.container -->
@@ -170,6 +165,6 @@
     -# })
     -# </script>
 
-</body>
-
-</html>
+-# </body>
+-#
+-# </html>
