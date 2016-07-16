@@ -8,6 +8,10 @@ class ArticlesController < ApplicationController
     @articles = Article.tagged_with("news").where("end_date > ?", Date.today).order("id desc")
   end
 
+  def rules
+    @articles = Article.tagged_with("rules").where("end_date > ?", Date.today).order(:id)
+  end
+
   # GET /articles/1
   # GET /articles/1.json
   def show
@@ -15,7 +19,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles/new
   def new
-    @article = Article.new
+    @article = current_user.articles.build
     authorize_action_for(@article)
   end
 
