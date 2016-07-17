@@ -5,11 +5,12 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.tagged_with("news").where("end_date > ?", Date.today).order("id desc")
+    @articles = Article.tagged_with("news").current.by_publish_date
+    # @articles = Article.tagged_with("news").current.by_publish_date
   end
 
   def rules
-    @articles = Article.tagged_with("rules").where("end_date > ?", Date.today).order(:id)
+    @articles = Article.tagged_with("rules").current.order(:id)
   end
 
   # GET /articles/1
@@ -77,6 +78,6 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:user_id, :title, :body, :start_date, :end_date, :tag_list)
+      params.require(:article).permit(:user_id, :title, :body, :start_date, :end_date, :tag_list, :sticky)
     end
 end
