@@ -5,5 +5,5 @@ class Article < ActiveRecord::Base
   belongs_to :user
 
   scope :current, -> { where("start_date <= ? and end_date > ?", Date.today, Date.today) }
-  scope :by_publish_date, -> { order("sticky, start_date desc") }
+  scope :by_publish_date, -> { order("sticky desc, start_date desc") }
 end

@@ -1,16 +1,24 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:news, :rules, :welcome]
+  layout Proc.new{ ['welcome'].include?(action_name) ? 'welcome' : 'application' }
 
   # GET /articles
   # GET /articles.json
   def index
+    @articles = Article.all.order(:created_at)
+  end
+
+  def news
     @articles = Article.tagged_with("news").current.by_publish_date
-    # @articles = Article.tagged_with("news").current.by_publish_date
   end
 
   def rules
     @articles = Article.tagged_with("rules").current.order(:id)
+  end
+
+  def welcome
+    @articles = Article.tagged_with("news").current.by_publish_date.take(4)
   end
 
   # GET /articles/1
@@ -22,11 +30,13 @@ class ArticlesController < ApplicationController
   def new
     @article = current_user.articles.build
     authorize_action_for(@article)
+    session[:return_to] ||= request.referer
   end
 
   # GET /articles/1/edit
   def edit
     authorize_action_for(@article)
+    session[:return_to] ||= request.referer
   end
 
   # POST /articles
@@ -36,7 +46,7 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
-        format.html { redirect_to articles_url, notice: 'Article was successfully created.' }
+        format.html { redirect_to session.delete(:return_to), notice: 'Article was successfully created.' }
         format.json { render :show, status: :created, location: @article }
       else
         format.html { render :new }
@@ -50,7 +60,7 @@ class ArticlesController < ApplicationController
   def update
     respond_to do |format|
       if @article.update(article_params)
-        format.html { redirect_to articles_url, notice: 'Article was successfully updated.' }
+        format.html { redirect_to session.delete(:return_to), notice: 'Article was successfully updated.' }
         format.json { render :show, status: :ok, location: @article }
       else
         format.html { render :edit }
@@ -63,9 +73,10 @@ class ArticlesController < ApplicationController
   # DELETE /articles/1.json
   def destroy
     authorize_action_for(@article)
+    session[:return_to] ||= request.referer
     @article.destroy
     respond_to do |format|
-      format.html { redirect_to articles_url, notice: 'Article was successfully destroyed.' }
+      format.html { redirect_to session.delete(:return_to), notice: 'Article was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

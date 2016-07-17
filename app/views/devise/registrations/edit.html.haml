@@ -17,4 +17,4 @@
                 = f.input :password_confirmation, required: false, wrapper_html: {class: "col-md-6"}
             = f.input :current_password, hint: "we need your current password to confirm your changes", required: true
         .form-actions
-            = f.button :submit, "Update"
+            = f.button :submit, "Update", class: "btn btn-primary"

@@ -2,6 +2,8 @@ require 'csv'
 
 class User < ActiveRecord::Base
   include Authority::UserAbilities
+  include Authority::Abilities
+  self.authorizer_name = 'AdminAuthorizer'
   rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -9,6 +11,17 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :articles
+  belongs_to :street, :foreign_key => "street_id"
+
+  def last_name_first
+    name = "#{last_name}, #{first_name}"
+    name += " & #{spouse_name}" if spouse_name?
+    name
+  end
+
+  def address
+    "#{street_number} #{street.name}"
+  end
 
   def self.import(filename)
     CSV.foreach(filename, headers: true) do |row|
