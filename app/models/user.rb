@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   has_many :articles
   belongs_to :street, :foreign_key => "street_id"
 
+  validates_format_of :phone_number, with: /\d{3}-\d{3}-\d{4}/, message: "Phone format must be 999-999-9999"
+
   def last_name_first
     name = "#{last_name}, #{first_name}"
     name += " & #{spouse_name}" if spouse_name?

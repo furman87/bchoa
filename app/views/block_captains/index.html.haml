@@ -1,0 +1,17 @@
+%h1 Butler Creek Block Captains
+
+%table.table.table-striped
+    %thead
+        %tr
+            %th Description
+            %th Name
+            %th Email
+            %th Phone
+
+    %tbody
+        - @block_captains.each do |captain|
+            %tr
+                %td= captain.description
+                %td= (captain.spouse ? captain.user.spouse_name : captain.user.first_name) + " " + captain.user.last_name
+                %td= captain.spouse && captain.user.spouse_email ? captain.user.spouse_email : captain.user.email
+                %td= captain.spouse && captain.user.spouse_phone ? captain.user.spouse_phone : captain.user.phone_number

@@ -1,6 +1,6 @@
 .col-md-12
     %h1 Butler Creek News
-    %h3 The latest happenings around Butler Creek
+    %h3 The latest happenings in Butler Creek
 
     = link_to 'New Article', new_article_path if current_user && current_user.can_create?(Article)
     - @articles.each do |article|

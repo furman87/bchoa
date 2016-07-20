@@ -18,7 +18,7 @@ class ArticlesController < ApplicationController
   end
 
   def welcome
-    @articles = Article.tagged_with("news").current.by_publish_date.take(4)
+    @articles = Article.tagged_with("welcome").current.by_publish_date.take(4)
   end
 
   # GET /articles/1

@@ -28,6 +28,7 @@ img#logo {
   font-size: 0.75em;
   font-style: italic;
   color: #b3b3b3;
+  margin-left: 10px;
 }
 
 .article-expires {
@@ -49,22 +50,18 @@ header > h3 {
   height: 300px;
 }
 
-// Sticky footer styles
-// html {
-//   position: relative;
-//   min-height: 100%;
-// }
-//
-// body {
-//   /* Margin bottom by footer height */
-//   margin-bottom: 50px;
-// }
-//
-// .footer {
-//   position: absolute;
-//   bottom: 0;
-//   width: 100%;
-//   /* Set the fixed height of the footer here */
-//   height: 50px;
-//   background-color: #001a00;
-// }
+div.article {
+  border-top: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+
+.anchor {
+  display: block;
+  position: relative;
+  top: -50px;
+  visibility: hidden;
+}
+
+.wrap {
+  white-space: pre-line;
+}

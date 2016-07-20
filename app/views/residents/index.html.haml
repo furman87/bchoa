@@ -7,8 +7,7 @@
             %th Address
             %th Email
             %th Phone
-            %th Spouse Email
-            %th Spouse Phone
+            %th Year
 
     %tbody
         - @residents.each do |resident|
@@ -18,7 +17,6 @@
                 - else
                     %td= resident.last_name_first
                 %td= resident.address
-                %td= resident.email
-                %td= resident.phone_number
-                %td= resident.spouse_email
-                %td= resident.spouse_phone
+                %td.wrap<= resident.email + (resident.spouse_email? ? "\n" + resident.spouse_email : "")
+                %td.wrap<= resident.phone_number + (resident.spouse_phone? ? "\n" + resident.spouse_phone : "")
+                %td= resident.purchase_year
