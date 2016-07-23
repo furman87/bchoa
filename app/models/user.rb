@@ -3,7 +3,6 @@ require 'csv'
 class User < ActiveRecord::Base
   include Authority::UserAbilities
   include Authority::Abilities
-  self.authorizer_name = 'AdminAuthorizer'
   rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -13,7 +12,8 @@ class User < ActiveRecord::Base
   has_many :articles
   belongs_to :street, :foreign_key => "street_id"
 
-  validates_format_of :phone_number, with: /\d{3}-\d{3}-\d{4}/, message: "Phone format must be 999-999-9999"
+  validates_format_of :phone, with: /\d{3}-\d{3}-\d{4}/, allow_blank: true, message: "format must be 999-999-9999"
+  validates_format_of :spouse_phone, with: /\d{3}-\d{3}-\d{4}/, allow_blank: true, message: "format must be 999-999-9999"
 
   def last_name_first
     name = "#{last_name}, #{first_name}"
@@ -22,7 +22,15 @@ class User < ActiveRecord::Base
   end
 
   def address
-    "#{street_number} #{street.name}"
+    street_number.to_s + " " +street.name
+  end
+
+  def display_phone_for(user)
+    readable_by?(user) || !phone_is_private ? phone : ""
+  end
+
+  def display_spouse_phone_for(user)
+    readable_by?(user) || !spouse_phone_is_private ? spouse_phone : ""
   end
 
   def self.import(filename)

@@ -18,5 +18,5 @@
                     %td= resident.last_name_first
                 %td= resident.address
                 %td.wrap<= resident.email + (resident.spouse_email? ? "\n" + resident.spouse_email : "")
-                %td.wrap<= resident.phone_number + (resident.spouse_phone? ? "\n" + resident.spouse_phone : "")
+                %td.wrap<= resident.display_phone_for(current_user) + (resident.spouse_phone? ? "\n" + resident.display_spouse_phone_for(current_user) : "")
                 %td= resident.purchase_year

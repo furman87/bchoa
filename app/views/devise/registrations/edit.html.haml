@@ -10,8 +10,11 @@
                 = f.input :last_name, required: true, wrapper_html: {class: "col-md-6"}
             = f.input :spouse_name
             .form-inputs.row
-                = f.input :phone_number, required: true, wrapper_html: {class: "col-md-6"}
-                = f.input :spouse_phone, wrapper_html: {class: "col-md-6"}
+                = f.input :phone, required: true, wrapper_html: {class: "col-md-6 tight-row"}
+                = f.input :spouse_phone, wrapper_html: {class: "col-md-6 tight-row"}
+            .form-inputs.row
+                = f.input :phone_is_private, wrapper_html: {class: "col-md-6"}
+                = f.input :spouse_phone_is_private, wrapper_html: {class: "col-md-6"}
             .form-inputs.row
                 = f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false, wrapper_html: {class: "col-md-6"}
                 = f.input :password_confirmation, required: false, wrapper_html: {class: "col-md-6"}

@@ -21,7 +21,7 @@
                         %span.caret
                     %ul.dropdown-menu
                         %li
-                            %a{ href: board_path } Board
+                            %a{ href: board_path } Meet the Board
                         %li
                             %a{ href: block_captains_path } Block Captains
                 %li
@@ -29,18 +29,18 @@
                 %li.dropdown
                     -# %a.dropdown-toggle{:href => "#", "role" => "button", "data-toggle" => "dropdown", "data-target" => "#"}
                     %a.dropdown-toggle{ href: "#", "data-toggle": "dropdown" }
-                        Resources
+                        Documents
                         %span.caret
                     %ul.dropdown-menu
+                        - if user_signed_in?
+                            %li
+                                %a{ href: residents_path } Residents List
+                            %li
+                                %a{ href: "newsletters.html" } Board Minutes
                         %li
                             %a{ href: "newsletters.html" } Newsletters
                         %li
                             %a{ href: rules_path } Facility Rules
-                        - if user_signed_in?
-                            %li
-                                %a{ href: "documents.html" } Documents
-                            %li
-                                %a{ href: residents_path } Residents List
                         %li
                             %a{ href: "architectural.html" } Architectural
                 -# %li.dropdown

@@ -11,6 +11,6 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password) }
 
     # Fields for editing an existing account
-    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :email, :password, :current_password, :first_name, :last_name, :spouse_name, :street_number, :street_id, :phone_number, :spouse_phone, :spouse_email) }
+    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :email, :password, :current_password, :first_name, :last_name, :spouse_name, :street_number, :street_id, :phone, :spouse_phone, :spouse_email, :phone_is_private, :spouse_phone_is_private) }
   end
 end
