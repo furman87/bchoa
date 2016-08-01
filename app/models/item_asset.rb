@@ -1,5 +1,7 @@
 class ItemAsset < ActiveRecord::Base
-  belongs_to :item, :polymorphic => true
+  # belongs_to :items, :polymorphic => true
+  belongs_to :article
+  alias_attribute :item, :article
 
   # has_attached_file :document
   has_attached_file :asset, :styles => lambda { |a| { :thumbnail => "200>", :medium => "500>", :large => "1000>" } if a.instance.is_image? }

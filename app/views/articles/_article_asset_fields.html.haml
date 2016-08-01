@@ -1,0 +1,10 @@
+.attachment
+    - if f.object.persisted?
+        = link_to f.object.description, f.object.asset.url, { class: "article-attachment" }
+    - else
+        .form-group
+            = f.input :asset, as: :file
+
+    .form-group
+        = f.input :description, input_html: { class: "form-control" }
+        = link_to_remove_association "Remove", f, { class: 'btn btn-default btn-xs', wrapper_class: "attachment" }

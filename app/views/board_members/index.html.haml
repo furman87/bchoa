@@ -12,6 +12,6 @@
         - @board_members.each do |member|
             %tr
                 %td= member.description
-                %td= (member.spouse ? member.user.spouse_name : member.user.first_name) + " " + member.user.last_name
-                %td= member.spouse && member.user.spouse_email ? member.user.spouse_email : member.user.email
-                %td= member.spouse && member.user.spouse_phone ? member.user.spouse_phone : member.user.phone
+                %td= board_name(member)
+                %td= board_email(member)
+                %td= board_phone(member)

@@ -16,6 +16,7 @@ gem 'devise', '~> 3.5', '>= 3.5.6'
 gem 'authority', '~> 3.1'
 gem 'rolify', '~> 5.1'
 gem 'paperclip', '~> 4.3', '>= 4.3.6'
+gem 'cocoon', '~> 1.2', '>= 1.2.9'
 gem 'acts-as-taggable-on', '~> 3.5'
 
 group :development, :test do

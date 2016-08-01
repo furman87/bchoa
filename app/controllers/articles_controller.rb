@@ -14,7 +14,17 @@ class ArticlesController < ApplicationController
   end
 
   def rules
-    @articles = Article.tagged_with("rules").current.order(:id)
+    @articles = Article.tagged_with("rule").current.order(:id)
+  end
+
+  def documents
+    @articles = Article.tagged_with("document").current.order(:id)
+  end
+
+  def acc
+    @articles = Article.tagged_with("acc").current.order(:id)
+    @acc_chair = BoardMember.includes(:user).where(description: "ACC Chairperson").first
+    render "architectural"
   end
 
   def welcome
@@ -42,7 +52,8 @@ class ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.json
   def create
-    @article = Article.new(article_params)
+    @article = current_user.articles.build(article_params)
+    # @article = Article.new(article_params)
 
     respond_to do |format|
       if @article.save
@@ -89,6 +100,6 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:user_id, :title, :body, :start_date, :end_date, :tag_list, :sticky)
+      params.require(:article).permit(:user_id, :title, :body, :start_date, :end_date, :tag_list, :sticky, article_assets_attributes: [:id, :asset, :description, :_destroy])
     end
 end

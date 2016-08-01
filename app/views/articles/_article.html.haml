@@ -2,8 +2,16 @@
 %header
     %h3= article.title
     %span.article-published= "Published #{article.start_date.strftime("%B %-d, %Y")}"
+
 .article
     %p= simple_format(article.body)
+    - article.article_assets.each do |attachment|
+        - if attachment.is_image?
+            = image_tag attachment.asset.url(:medium)
+        - else
+            = link_to attachment.description, attachment.asset.url, { class: "article-attachment" }
+            %br
+
     %p.article-expires Article will be shown until #{article.end_date.strftime("%B %-d, %Y")}
 
     = link_to 'Edit', edit_article_path(article) if current_user && current_user.can_update?(article)

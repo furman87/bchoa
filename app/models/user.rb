@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
   validates_format_of :phone, with: /\d{3}-\d{3}-\d{4}/, allow_blank: true, message: "format must be 999-999-9999"
   validates_format_of :spouse_phone, with: /\d{3}-\d{3}-\d{4}/, allow_blank: true, message: "format must be 999-999-9999"
 
+  def first_last
+    "#{first_name} #{last_name}"
+  end
+
   def last_name_first
     name = "#{last_name}, #{first_name}"
     name += " & #{spouse_name}" if spouse_name?

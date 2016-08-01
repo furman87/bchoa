@@ -1,4 +1,4 @@
-= simple_form_for(@article) do |f|
+= simple_form_for @article, html: { multipart: true } do |f|
     = f.error_notification
 
     .form-inputs
@@ -9,6 +9,15 @@
         = f.input :start_date
         = f.input :end_date
         = f.input :sticky
+
+    %h3
+        Attachments
+        = link_to_add_association 'Add Attachment', f, :article_assets, { id: "add-article-attachment", class: "btn btn-xs btn-default" }
+
+    #article-attachments
+        - if @article.article_assets
+            = f.simple_fields_for :article_assets do |asset_fields|
+                = render 'article_asset_fields', f: asset_fields
 
     .form-actions
         = f.button :submit, class: "btn btn-primary"
