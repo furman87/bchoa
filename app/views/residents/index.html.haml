@@ -1,22 +1,24 @@
-%h1 Butler Creek Residents
+.col-md-12
+    %h1 Butler Creek Residents
 
-%table.table.table-striped
-    %thead
-        %tr
-            %th Name
-            %th Address
-            %th Email
-            %th Phone
-            %th Year
-
-    %tbody
-        - @residents.each do |resident|
+    %table.table.table-striped
+        %thead
             %tr
-                - if current_user.can_update?(resident)
-                    %td= link_to resident.last_name_first, edit_user_registration_path
-                - else
-                    %td= resident.last_name_first
-                %td= resident.address
-                %td.wrap<= resident.email + (resident.spouse_email? ? "\n" + resident.spouse_email : "")
-                %td.wrap<= resident.display_phone_for(current_user) + (resident.spouse_phone? ? "\n" + resident.display_spouse_phone_for(current_user) : "")
-                %td= resident.purchase_year
+                %th Name
+                %th Address
+                %th Email
+                %th Phone
+                %th Year
+
+        %tbody
+            - @residents.each do |resident|
+                %tr
+                    -# - if current_user.can_update?(resident)
+                    - if @can_update_user
+                        %td= link_to resident.last_name_first, edit_user_registration_path
+                    - else
+                        %td= resident.last_name_first
+                    %td= resident.address
+                    %td.wrap<= resident.email + (resident.spouse_email? ? "\n" + resident.spouse_email : "")
+                    %td.wrap<= resident.display_phone(@can_display_private) + (resident.spouse_phone? ? "\n" + resident.display_spouse_phone(@can_display_private) : "")
+                    %td= resident.purchase_year

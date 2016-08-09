@@ -10,21 +10,20 @@ class ArticlesController < ApplicationController
   end
 
   def news
-    @articles = Article.tagged_with("news").current.by_publish_date
+    get_articles("news")
   end
 
   def rules
-    @articles = Article.tagged_with("rule").current.order(:id)
+    get_articles("rule")
   end
 
   def documents
-    @articles = Article.tagged_with("document").current.order(:id)
+    get_articles("document")
   end
 
   def acc
-    @articles = Article.tagged_with("acc").current.order(:id)
+    get_articles("acc")
     @acc_chair = BoardMember.includes(:user).where(description: "ACC Chairperson").first
-    render "architectural"
   end
 
   def welcome
@@ -98,8 +97,12 @@ class ArticlesController < ApplicationController
       @article = Article.find(params[:id])
     end
 
+    def get_articles(tag)
+      @articles = Article.tagged_with(tag).current.by_display_order
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:user_id, :title, :body, :start_date, :end_date, :tag_list, :sticky, article_assets_attributes: [:id, :asset, :description, :_destroy])
+      params.require(:article).permit(:user_id, :title, :body, :start_date, :end_date, :tag_list, :sticky, :display_order, article_assets_attributes: [:id, :asset, :description, :display_order, :_destroy])
     end
 end

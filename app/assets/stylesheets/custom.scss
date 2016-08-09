@@ -14,7 +14,7 @@ img#logo {
   height: 40px;
   float: left;
   padding-right: 10px;
-  margin-top: 5px;
+  margin-top: -10px;
 }
 
 .article-published {
@@ -39,7 +39,7 @@ header > h3 {
   font-style: italic;
 }
 
-#article_body {
+#article-body {
   height: 300px;
 }
 
@@ -61,4 +61,9 @@ div.article {
 
 .form-group.tight-row {
   margin-bottom: 0px;
+}
+
+#attachment-header {
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
 }

@@ -1,71 +1,73 @@
-%nav.navbar.navbar-inverse.navbar-fixed-top#menu{ role:  "navigation" }
-    .container
-        / Brand and toggle get grouped for better mobile display
-        .navbar-header
-            %button.navbar-toggle{ type: "button", "data-toggle": "collapse", "data-target": "#bs-example-navbar-collapse-1" }
-                %span.sr-only Toggle navigation
-                %span.icon-bar
-                %span.icon-bar
-                %span.icon-bar
-            %a{href: root_path}
-                %img#logo{ src: "/images/bchoalogo.gif" }
-            %a.navbar-brand{ href: root_path }
-                Butler Creek HOA
-        / Collect the nav links, forms, and other content for toggling
-        .collapse.navbar-collapse#bs-example-navbar-collapse-1
-            %ul.nav.navbar-nav.navbar-right
-                %li.dropdown
-                    -# %a.dropdown-toggle{:href => "#", "role" => "button", "data-toggle" => "dropdown", "data-target" => "#"}
-                    %a.dropdown-toggle{ href: "#", "data-toggle": "dropdown" }
-                        About
-                        %span.caret
-                    %ul.dropdown-menu
-                        %li
-                            %a{ href: board_path } Meet the Board
-                        %li
-                            %a{ href: block_captains_path } Block Captains
-                %li
-                    %a{ href: news_path } News
-                %li.dropdown
-                    -# %a.dropdown-toggle{:href => "#", "role" => "button", "data-toggle" => "dropdown", "data-target" => "#"}
-                    %a.dropdown-toggle{ href: "#", "data-toggle": "dropdown" }
-                        Documents
-                        %span.caret
-                    %ul.dropdown-menu
-                        - if user_signed_in?
+.container
+    %nav.navbar.navbar-inverse.navbar-fixed-top#menu{ role:  "navigation" }
+        .container
+            / Brand and toggle get grouped for better mobile display
+            .navbar-header
+                %button.navbar-toggle{ type: "button", "data-toggle": "collapse", "data-target": "#bs-example-navbar-collapse-1" }
+                    %span.sr-only Toggle navigation
+                    %span.icon-bar
+                    %span.icon-bar
+                    %span.icon-bar
+                -# %a{href: root_path}
+                -#     %img#logo{ src: "/images/bchoalogo.gif" }
+                %a.navbar-brand{ href: root_path }
+                    %img#logo{ src: "/images/bchoalogo.gif" }
+                    Butler Creek HOA
+            / Collect the nav links, forms, and other content for toggling
+            .collapse.navbar-collapse#bs-example-navbar-collapse-1
+                %ul.nav.navbar-nav.navbar-right
+                    %li.dropdown
+                        -# %a.dropdown-toggle{:href => "#", "role" => "button", "data-toggle" => "dropdown", "data-target" => "#"}
+                        %a.dropdown-toggle{ href: "#", "data-toggle": "dropdown" }
+                            About
+                            %span.caret
+                        %ul.dropdown-menu
                             %li
-                                %a{ href: residents_path } Residents List
+                                %a{ href: board_path } Meet the Board
                             %li
-                                %a{ href: "minutes.html" } Board Minutes
+                                %a{ href: block_captains_path } Block Captains
+                    %li
+                        %a{ href: news_path } News
+                    %li.dropdown
+                        -# %a.dropdown-toggle{:href => "#", "role" => "button", "data-toggle" => "dropdown", "data-target" => "#"}
+                        %a.dropdown-toggle{ href: "#", "data-toggle": "dropdown" }
+                            Documents
+                            %span.caret
+                        %ul.dropdown-menu
+                            - if user_signed_in?
+                                %li
+                                    %a{ href: residents_path } Residents List
+                                %li
+                                    %a{ href: "minutes.html" } Board Minutes
+                                %li
+                                    %a{ href: documents_path } Documents
                             %li
-                                %a{ href: documents_path } Documents
-                        %li
-                            %a{ href: "newsletters.html" } Newsletters
-                        %li
-                            %a{ href: rules_path } Facility Rules
-                        %li
-                            %a{ href: acc_path } Architectural
-                -# %li.dropdown
-                -#     %a.dropdown-toggle{href: "#", "data-toggle": "dropdown"}
-                -#         Portfolio
-                -#         %span.caret
-                -#     %ul.dropdown-menu
-                -#         %li
-                -#             %a{href: "portfolio-1-col.html"} 1 Column Portfolio
-                -#         %li
-                -#             %a{href: "portfolio-2-col.html"} 2 Column Portfolio
-                -#         %li
-                -#             %a{href: "portfolio-3-col.html"} 3 Column Portfolio
-                -#         %li
-                -#             %a{href: "portfolio-4-col.html"} 4 Column Portfolio
-                -#         %li
-                -#             %a{href: "portfolio-item.html"} Single Portfolio Item
-                -# %li
-                -#     %a{href: "contact.html"} Contact
+                                %a{ href: "newsletters.html" } Newsletters
+                            %li
+                                %a{ href: rules_path } Facility Rules
+                            %li
+                                %a{ href: acc_path } Architectural
+                    -# %li.dropdown
+                    -#     %a.dropdown-toggle{href: "#", "data-toggle": "dropdown"}
+                    -#         Portfolio
+                    -#         %span.caret
+                    -#     %ul.dropdown-menu
+                    -#         %li
+                    -#             %a{href: "portfolio-1-col.html"} 1 Column Portfolio
+                    -#         %li
+                    -#             %a{href: "portfolio-2-col.html"} 2 Column Portfolio
+                    -#         %li
+                    -#             %a{href: "portfolio-3-col.html"} 3 Column Portfolio
+                    -#         %li
+                    -#             %a{href: "portfolio-4-col.html"} 4 Column Portfolio
+                    -#         %li
+                    -#             %a{href: "portfolio-item.html"} Single Portfolio Item
+                    -# %li
+                    -#     %a{href: "contact.html"} Contact
 
-                -# %ul.nav.navbar-nav.navbar-right
-                - if user_signed_in?
-                    %li= link_to "Account", edit_user_registration_path
-                    %li= link_to "Sign Out", destroy_user_session_path, method: :delete
-                -else
-                    %li= link_to "Sign In", new_user_session_path
+                    -# %ul.nav.navbar-nav.navbar-right
+                    - if user_signed_in?
+                        %li= link_to "Account", edit_user_registration_path
+                        %li= link_to "Sign Out", destroy_user_session_path, method: :delete
+                    -else
+                        %li= link_to "Sign In", new_user_session_path

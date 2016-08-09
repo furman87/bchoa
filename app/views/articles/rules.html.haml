@@ -1,5 +1,6 @@
-%h1 Facility Rules
-- @articles.each do |article|
-    %h4
-        %a{href: "#" + article.title.downcase.gsub(" ", "_")}= article.title
-= render partial: "articles_list", locals: {articles: @articles, document_type: 'rule'}
+.col-md-12
+    %h1 Facility Rules
+    - @articles.each do |article|
+        %h4
+            %a{href: "#" + article.title.downcase.gsub(" ", "_")}= article.title
+    = render partial: "articles_list", locals: {articles: @articles, document_type: 'rule'}

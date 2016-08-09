@@ -29,12 +29,12 @@ class User < ActiveRecord::Base
     street_number.to_s + " " +street.name
   end
 
-  def display_phone_for(user)
-    readable_by?(user) || !phone_is_private ? phone : ""
+  def display_phone(display_private)
+    display_private || !phone_is_private ? phone : ""
   end
 
-  def display_spouse_phone_for(user)
-    readable_by?(user) || !spouse_phone_is_private ? spouse_phone : ""
+  def display_spouse_phone(display_private)
+    display_private || !spouse_phone_is_private ? spouse_phone : ""
   end
 
   def self.import(filename)

@@ -13,11 +13,20 @@ class ApplicationAuthorizer < Authority::Authorizer
     #   false
     # end
 
-    # Class method: can this user at least sometimes create a Schedule?
+    # Class methods: can this user at least sometimes create a Schedule?
     def self.creatable_by?(user)
       user.has_any_role? :admin, :board
     end
 
+    def self.updatable_by?(user)
+      user.has_any_role? :admin, :board
+    end
+
+    def self.readable_by?(user)
+      user.has_any_role? :admin, :board
+    end
+
+    # Instance methods
     def creatable_by?(user)
       user.has_any_role? :admin, :board
     end
