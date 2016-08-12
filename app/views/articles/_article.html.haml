@@ -14,11 +14,12 @@
             %span.glyphicon.glyphicon-remove-circle
             Delete
     %p= simple_format(article.body)
-    - article.article_assets.each do |attachment|
-        - if attachment.is_image?
-            = image_tag attachment.asset.url(:medium)
-        - else
-            = link_to attachment.description, attachment.asset.url, { class: "article-attachment" }
-            %br
+    %p
+        - article.article_assets.each do |attachment|
+            - if attachment.is_image?
+                = image_tag attachment.asset.url(:medium)
+            - else
+                = link_to attachment.description, attachment.asset.url, { class: "article-attachment" }
+                %br
 
     %p.article-expires Article will be shown until #{article.end_date.strftime("%B %-d, %Y")}

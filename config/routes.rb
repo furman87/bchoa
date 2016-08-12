@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get 'documents', to: 'articles#documents', as: 'documents'
   get 'news', to: 'articles#news', as: 'news'
   get 'architectural', to: 'articles#acc', as: 'acc'
+  get 'minutes', to: 'articles#minutes', as: 'minutes'
+  get 'newsletters', to: 'articles#newsletters', as: 'newsletters'
   resources :articles
   resources :board_members
   devise_for :users

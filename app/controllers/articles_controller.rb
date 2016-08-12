@@ -1,29 +1,37 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:news, :rules, :welcome]
+  before_action :authenticate_user!, except: [:news, :rules, :welcome, :acc, :newsletters]
   layout Proc.new{ ['welcome'].include?(action_name) ? 'welcome' : 'application' }
 
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all.order(:created_at)
+    @articles = Article.all.by_publish_date.by_display_order
+  end
+
+  def acc
+    get_articles("acc")
+    @acc_chair = BoardMember.includes(:user).where(description: "ACC Chairperson").first
+  end
+
+  def documents
+    get_articles("documents")
+  end
+
+  def minutes
+    get_articles("minutes")
   end
 
   def news
     get_articles("news")
   end
 
+  def newsletters
+    get_articles("newsletters")
+  end
+
   def rules
-    get_articles("rule")
-  end
-
-  def documents
-    get_articles("document")
-  end
-
-  def acc
-    get_articles("acc")
-    @acc_chair = BoardMember.includes(:user).where(description: "ACC Chairperson").first
+    get_articles("rules")
   end
 
   def welcome
@@ -37,7 +45,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles/new
   def new
-    @article = current_user.articles.build
+    @article = current_user.articles.build(start_date: Date.today, end_date: Date.today + 30, display_order: 1)
     authorize_action_for(@article)
     session[:return_to] ||= request.referer
   end
