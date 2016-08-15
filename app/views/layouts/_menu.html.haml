@@ -16,6 +16,8 @@
             / Collect the nav links, forms, and other content for toggling
             .collapse.navbar-collapse#bs-example-navbar-collapse-1
                 %ul.nav.navbar-nav.navbar-right
+                    %li
+                        %a{ href: root_path } Home
                     %li.dropdown
                         -# %a.dropdown-toggle{:href => "#", "role" => "button", "data-toggle" => "dropdown", "data-target" => "#"}
                         %a.dropdown-toggle{ href: "#", "data-toggle": "dropdown" }
@@ -24,6 +26,7 @@
                         %ul.dropdown-menu
                             %li
                                 %a{ href: board_path } Meet the Board
+                                %li.divider{role: "separator"}
                             %li
                                 %a{ href: block_captains_path } Block Captains
                     %li
@@ -31,20 +34,25 @@
                     %li.dropdown
                         -# %a.dropdown-toggle{:href => "#", "role" => "button", "data-toggle" => "dropdown", "data-target" => "#"}
                         %a.dropdown-toggle{ href: "#", "data-toggle": "dropdown" }
-                            Documents
+                            Residents
                             %span.caret
                         %ul.dropdown-menu
                             - if user_signed_in?
                                 %li
                                     %a{ href: residents_path } Residents List
+                                    %li.divider{role: "separator"}
                                 %li
                                     %a{ href: minutes_path } Board Minutes
+                                    %li.divider{role: "separator"}
                                 %li
                                     %a{ href: documents_path } By-Laws and Covenants
+                                    %li.divider{role: "separator"}
                             %li
                                 %a{ href: newsletters_path } Newsletters
+                                %li.divider{role: "separator"}
                             %li
                                 %a{ href: rules_path } Facility Rules
+                                %li.divider{role: "separator"}
                             %li
                                 %a{ href: acc_path } Architectural
                     -# %li.dropdown

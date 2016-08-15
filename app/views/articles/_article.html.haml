@@ -1,18 +1,16 @@
 %p.anchor{id: article.title.downcase.gsub(" ", "_")}
 %header
     - if article.title.present?
-        %h3= article.title
+        %h3.article-title= article.title
         %span.article-published= "Published #{article.start_date.strftime("%B %-d, %Y")}"
+        - if current_user && current_user.can_update?(article)
+            = link_to edit_article_path(article) do
+                %span.article-published Edit
+        - if current_user && current_user.can_delete?(article)
+            = link_to article, method: :delete, data: { confirm: 'Are you sure?' } do
+                %span.article-published Delete
 
 .article
-    - if current_user && current_user.can_update?(article)
-        = link_to edit_article_path(article), class: "btn btn-warning btn-xs" do
-            %span.glyphicon.glyphicon-edit
-            Edit
-    - if current_user && current_user.can_delete?(article)
-        = link_to article, class: "btn btn-danger btn-xs", method: :delete, data: { confirm: 'Are you sure?' } do
-            %span.glyphicon.glyphicon-remove-circle
-            Delete
     %p= simple_format(article.body)
     %p
         - article.article_assets.each do |attachment|
@@ -22,4 +20,4 @@
                 = link_to attachment.description, attachment.asset.url, { class: "article-attachment" }
                 %br
 
-    %p.article-expires Article will be shown until #{article.end_date.strftime("%B %-d, %Y")}
+    -# %p.article-expires Article will be shown until #{article.end_date.strftime("%B %-d, %Y")}
