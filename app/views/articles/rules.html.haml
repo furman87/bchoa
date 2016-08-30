@@ -1,5 +1,5 @@
 .col-md-12
-    %h1 Facility Rules
+    %h2 Facility Rules
     - @articles.each do |article|
         %h4
             %a{href: "#" + article.title.downcase.gsub(" ", "_")}= article.title

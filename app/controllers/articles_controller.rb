@@ -10,32 +10,32 @@ class ArticlesController < ApplicationController
   end
 
   def acc
-    get_articles("acc")
+    @articles = get_articles("acc")
     @acc_chair = BoardMember.includes(:user).where(description: "ACC Chairperson").first
   end
 
   def documents
-    get_articles("documents")
+    @articles = get_articles("documents")
   end
 
   def minutes
-    get_articles("minutes")
+    @articles = get_articles("minutes")
   end
 
   def news
-    get_articles("news")
+    @articles = get_articles("news")
   end
 
   def newsletters
-    get_articles("newsletters")
+    @articles = get_articles("newsletters")
   end
 
   def rules
-    get_articles("rules")
+    @articles = get_articles("rules")
   end
 
   def welcome
-    @articles = Article.tagged_with("welcome").current.by_publish_date.take(4)
+    @articles = get_articles("welcome").take(4)
   end
 
   # GET /articles/1
@@ -106,7 +106,7 @@ class ArticlesController < ApplicationController
     end
 
     def get_articles(tag)
-      @articles = Article.tagged_with(tag).current.by_display_order
+      Article.tagged_with(tag).current.by_display_order
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
