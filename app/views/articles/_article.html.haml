@@ -2,13 +2,14 @@
 %header
     - if article.title.present?
         %h3.article-title= article.title
-        %span.article-published= "Published #{article.start_date.strftime("%B %-d, %Y")}"
-        - if current_user && current_user.can_update?(article)
-            = link_to edit_article_path(article) do
-                %span.article-published Edit
-        - if current_user && current_user.can_delete?(article)
-            = link_to article, method: :delete, data: { confirm: 'Are you sure?' } do
-                %span.article-published Delete
+        %p.article-published
+            %span= "Published #{article.start_date.strftime("%B %-d, %Y")}"
+            - if current_user && current_user.can_update?(article)
+                = link_to edit_article_path(article) do
+                    %span Edit
+            - if current_user && current_user.can_delete?(article)
+                = link_to article, method: :delete, data: { confirm: 'Are you sure?' } do
+                    %span Delete
 
 .article
     %p= simple_format(article.body)
