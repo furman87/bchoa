@@ -15,24 +15,24 @@ class ApplicationAuthorizer < Authority::Authorizer
 
     # Class methods: can this user at least sometimes create a Schedule?
     def self.creatable_by?(user)
-      user.has_any_role? :admin, :board
+      user.has_any_role? :admin, :editor
     end
 
     def self.updatable_by?(user)
-      user.has_any_role? :admin, :board
+      user.has_any_role? :admin, :editor
     end
 
     def self.readable_by?(user)
-      user.has_any_role? :admin, :board
+      user.has_any_role? :admin, :editor, :board
     end
 
     # Instance methods
     def creatable_by?(user)
-      user.has_any_role? :admin, :board
+      user.has_any_role? :admin, :editor
     end
 
     def updatable_by?(user)
-      user.has_any_role? :admin, :board
+      user.has_any_role? :admin, :editor
     end
 
     def deletable_by?(user)
@@ -40,6 +40,6 @@ class ApplicationAuthorizer < Authority::Authorizer
     end
 
     def readable_by?(user)
-      user.has_any_role? :admin, :board
+      user.has_any_role? :admin, :editor, :board
     end
 end
