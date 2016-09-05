@@ -12,7 +12,8 @@
                     %span Delete
 
 .article
-    %p= simple_format(article.body)
+    -# %p= simple_format(article.body)
+    %p= article.body.html_safe
     %p
         - article.article_assets.each do |attachment|
             - if attachment.is_image?

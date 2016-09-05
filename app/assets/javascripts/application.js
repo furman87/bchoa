@@ -17,3 +17,4 @@
 //= require cocoon
 //= require welcome
 //= require articles
+//= require tinymce-jquery

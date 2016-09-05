@@ -4,7 +4,7 @@
     .form-inputs
         = f.hidden_field :user_id
         = f.input :title
-        = f.input :body, input_html: { rows: 5 }
+        = f.input :body, input_html: { class: "tinymce", rows: 20, cols: 120 }
         = f.input :tag_list, label: "Tags* (separated by commas)", input_html: { value: @article.tag_list.to_s }
         .form-inputs.row
             = f.input :start_date, as: :string, input_html: { value: @article.start_date.to_date.to_s, class: "datepicker" }, wrapper_html: {class: "col-md-4"}
@@ -24,3 +24,5 @@
 
     .form-actions
         = f.button :submit, class: "btn btn-primary"
+
+= tinymce
