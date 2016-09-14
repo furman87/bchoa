@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'architectural', to: 'articles#acc', as: 'acc'
   get 'minutes', to: 'articles#minutes', as: 'minutes'
   get 'newsletters', to: 'articles#newsletters', as: 'newsletters'
+  resources :mail, only: [:new, :create]
   resources :articles, except: [:index, :show]
   resources :board_members
   # devise_for :users

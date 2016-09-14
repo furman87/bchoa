@@ -1,0 +1,15 @@
+.col-md-6
+    %h2 New Mail
+
+    = simple_form_for @mail, url: html: { multipart: true } do |f|
+        = f.error_notification
+
+        .form-inputs
+            = f.hidden_field :user_id
+            = f.input :title
+            = f.input :body, input_html: { class: "tinymce", rows: 20, cols: 120 }
+
+        .form-actions
+            = f.button :submit, class: "btn btn-primary"
+
+= tinymce
