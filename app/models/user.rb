@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :articles
+  has_many :mail_messages
+  
   belongs_to :street, :foreign_key => "street_id"
 
   validates_format_of :phone, with: /\d{3}-\d{3}-\d{4}/, allow_blank: true, message: "format must be 999-999-9999"

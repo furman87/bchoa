@@ -1,7 +1,7 @@
 .col-md-6
     %h2 New Mail
 
-    = simple_form_for @mail, url: html: { multipart: true } do |f|
+    = simple_form_for @mail_message, url: create_mail_path(@mail_message), html: { multipart: true } do |f|
         = f.error_notification
 
         .form-inputs
@@ -10,6 +10,6 @@
             = f.input :body, input_html: { class: "tinymce", rows: 20, cols: 120 }
 
         .form-actions
-            = f.button :submit, class: "btn btn-primary"
+            = f.button :submit, 'Send Mail', class: "btn btn-primary"
 
 = tinymce

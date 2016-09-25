@@ -14,40 +14,42 @@
     = csrf_meta_tags
 
 %body
-    / Navigation
-    = render "layouts/menu"
+    #wrap
+        = render "layouts/menu"
 
-    / Header Carousel
-    .carousel.slide{ id: "carousel", "data-ride": "carousel" }
-        / Indicators
-        %ol.carousel-indicators
-            %li.active{ "data-target": "#carousel", "data-slide-to": "0" }
-            %li{ "data-target": "#carousel", "data-slide-to": "1" }
-            %li{ "data-target": "#carousel", "data-slide-to": "2" }
+        / Header Carousel
+        .carousel.slide{ id: "carousel", "data-ride": "carousel" }
+            / Indicators
+            %ol.carousel-indicators
+                %li.active{ "data-target": "#carousel", "data-slide-to": "0" }
+                %li{ "data-target": "#carousel", "data-slide-to": "1" }
+                %li{ "data-target": "#carousel", "data-slide-to": "2" }
 
-        / Wrapper for slides
-        .carousel-inner
-            .item.active
-                %img{ src: "images/bc_entrance_70.jpg" }
-                -# .carousel-caption
-                -#     %h4 Nick
-            .item
-                %img{ src: "images/pool_70.jpg" }
-                -# .carousel-caption
-                -#     %h4 Sam
-            .item
-                %img{ src: "images/tennis_70.jpg" }
-                -# .carousel-caption
-                -#     %h4 Matthew
+            / Wrapper for slides
+            .carousel-inner
+                .item.active
+                    %img{ src: "images/bc_entrance_70.jpg" }
+                    -# .carousel-caption
+                    -#     %h4 Nick
+                .item
+                    %img{ src: "images/pool_70.jpg" }
+                    -# .carousel-caption
+                    -#     %h4 Sam
+                .item
+                    %img{ src: "images/tennis_70.jpg" }
+                    -# .carousel-caption
+                    -#     %h4 Matthew
 
-        / Controls
-        %a.left.carousel-control{ href: "#carousel", "role": "button", "data-slide": "prev" }
-            %span.glyphicon.glyphicon-chevron-left
-        %a.right.carousel-control{ href: "#carousel", "role": "button", "data-slide": "next" }
-            %span.glyphicon.glyphicon-chevron-right
+            / Controls
+            %a.left.carousel-control{ href: "#carousel", "role": "button", "data-slide": "prev" }
+                %span.glyphicon.glyphicon-chevron-left
+            %a.right.carousel-control{ href: "#carousel", "role": "button", "data-slide": "next" }
+                %span.glyphicon.glyphicon-chevron-right
 
-    .container
-        .row
-            - flash.each do |name, msg|
-                = content_tag :div, msg, class: "alert alert-#{name == 'notice' ? 'success' : 'danger'}"
-            = yield
+        .container
+            .row
+                - flash.each do |name, msg|
+                    = content_tag :div, msg, class: "alert alert-#{name == 'notice' ? 'success' : 'danger'}"
+                = yield
+
+    = render "layouts/footer"
