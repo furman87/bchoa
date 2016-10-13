@@ -22,10 +22,8 @@ Rails.application.configure do
     port: 587,
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: "btlrcreek@yahoo.com",
-    password: "bcbosses2015"
-    # user_name: ENV['mail_username'],
-    # password: ENV['mail_password']
+    user_name: ENV['mail_username'],
+    password: ENV['mail_password']
   }
 
   # Print deprecation notices to the Rails logger.
