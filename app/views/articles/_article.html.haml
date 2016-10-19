@@ -16,7 +16,7 @@
     %p= article.body.html_safe
     - article.article_assets.each do |attachment|
         - if attachment.is_image?
-            = image_tag attachment.asset.url(:large), { class: "img-fluid" }
+            = image_tag attachment.asset.url(:large), { class: "img-fluid img-rounded" }
         - else
             = link_to attachment.description, attachment.asset.url, { class: "article-attachment" }
             %br
