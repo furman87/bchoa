@@ -14,6 +14,11 @@ img#logo {
   margin-top: -10px;
 }
 
+img.img-fluid {
+  display: block;
+  width: 100%;
+}
+
 header > h3 {
   display: inline-block;
 }
