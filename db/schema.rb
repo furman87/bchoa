@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160805043300) do
+ActiveRecord::Schema.define(version: 20161208121536) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,35 @@ ActiveRecord::Schema.define(version: 20160805043300) do
   end
 
   add_index "item_assets", ["item_type", "item_id"], name: "index_item_assets_on_item_type_and_item_id", using: :btree
+
+  create_table "mail_group_members", force: :cascade do |t|
+    t.integer  "mail_group_id"
+    t.integer  "user_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "mail_group_members", ["mail_group_id", "user_id"], name: "index_mail_group_members_on_mail_group_id_and_user_id", unique: true, using: :btree
+
+  create_table "mail_groups", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "mail_message_groups", force: :cascade do |t|
+    t.integer  "mail_message_id"
+    t.integer  "mail_group_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "mail_message_users", force: :cascade do |t|
+    t.integer  "mail_message_id"
+    t.integer  "user_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"

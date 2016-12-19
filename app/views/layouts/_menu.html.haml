@@ -49,13 +49,13 @@
                                 %a{ href: rules_path } Facility Rules
                             %li
                                 %a{ href: acc_path } Architectural
-                    - if user_signed_in? && (current_user.has_role?(:admin) || current_user.can_create?(MailMessage))
+                    - if user_signed_in? && (current_user.has_role?(:admin) || current_user.can_create?(Article))
                         %li.dropdown
                             %a.dropdown-toggle{ href: "#", "data-toggle": "dropdown" }
                                 Admin
                                 %span.caret
                             %ul.dropdown-menu
-                                - if current_user.can_create?(MailMessage)
+                                - if current_user.can_create?(Article)
                                     %li
                                         %a{ href: new_mail_path } Send Mail
                     - if user_signed_in?

@@ -10,8 +10,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :articles
-  has_many :mail_messages
-  
+  has_many :mail_group_members
+  has_many :mail_groups, through: :mail_group_members
+
   belongs_to :street, :foreign_key => "street_id"
 
   validates_format_of :phone, with: /\d{3}-\d{3}-\d{4}/, allow_blank: true, message: "format must be 999-999-9999"
@@ -25,6 +26,11 @@ class User < ActiveRecord::Base
     name = "#{last_name}, #{first_name}"
     name += " & #{spouse_name}" if spouse_name?
     name
+  end
+
+  def email_recipient
+    # %("#{first_last}" <#{email}>)
+    first_last
   end
 
   def address

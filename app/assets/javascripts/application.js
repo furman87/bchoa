@@ -15,6 +15,8 @@
 //= require bootstrap-sprockets
 //= require bootstrap-datepicker
 //= require cocoon
+//= require tinymce-jquery
+//= require chosen-jquery
+//= require custom
 //= require welcome
 //= require articles
-//= require tinymce-jquery

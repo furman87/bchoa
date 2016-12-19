@@ -50,4 +50,5 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
   Haml::Template.options[:ugly] = true
   Paperclip.options[:command_path] = "/usr/local/bin/"
+  config.web_console.whitelisted_ips = '10.0.2.2'
 end
