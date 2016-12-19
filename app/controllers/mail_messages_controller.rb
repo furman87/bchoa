@@ -18,7 +18,7 @@ class MailMessagesController < ApplicationController
     authorize_action_for(@mail_message)
 
     UserMailer.send_mail(mail_message_params, current_user).deliver_later
-    format.html { redirect_to session.delete(:return_to), notice: 'Mail was successfully created.' }
+    redirect_to session.delete(:return_to), notice: 'Mail was successfully created.'
   end
 
   private
