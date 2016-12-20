@@ -2,7 +2,7 @@ class Article < ActiveRecord::Base
   include Authority::Abilities
   acts_as_taggable
 
-  attr_accessor :mail_groups, :mail_users
+  attr_accessor :mail_groups, :mail_users, :is_mail
 
   belongs_to :user
   has_many :article_assets, -> { order(:display_order) }

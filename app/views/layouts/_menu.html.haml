@@ -55,7 +55,7 @@
                                 Admin
                                 %span.caret
                             %ul.dropdown-menu
-                                - if current_user.can_create?(Article)
+                                - if current_user.has_role? :secretary
                                     %li
                                         %a{ href: new_mail_path } Send Mail
                     - if user_signed_in?

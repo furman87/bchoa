@@ -64,7 +64,7 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
-        format.html { redirect_to session.delete(:return_to), notice: 'Article was successfully created.' }
+        format.html { redirect_to session[:return_to] ? session.delete(:return_to) : root_path, notice: 'Article was successfully created.' }
         format.json { render :show, status: :created, location: @article }
       else
         format.html { render :new }
