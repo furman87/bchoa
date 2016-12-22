@@ -9,7 +9,8 @@ body {
 
 div.article {
   border-top: 1px solid #ddd;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  overflow: hidden;
 }
 
 /* Set the fixed height of the footer here */
@@ -36,7 +37,9 @@ img#logo {
 
 img.img-fluid {
   display: block;
-  // width: 100%;
+  width: 100%;
+  margin-top: 15px;
+  float: left;
   // border: 1px solid #ddd;
   // padding: 15px;
 }
