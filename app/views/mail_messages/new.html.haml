@@ -1,5 +1,5 @@
 .col-md-9
-    %h2 My New Mail
+    %h2 New Mail
 
     = simple_form_for @mail_message, url: "/mail/create", html: { multipart: true } do |f|
         = f.error_notification
