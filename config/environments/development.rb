@@ -14,7 +14,17 @@ Rails.application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = { host: 'localhost:8081' }
+  config.action_mailer.delivery_method = :smtp;
+  config.action_mailer.smtp_settings = {
+    address: "smtp.mail.yahoo.com",
+    port: 587,
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: ENV['mail_username'],
+    password: ENV['mail_password']
+  }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -40,4 +50,5 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
   Haml::Template.options[:ugly] = true
   Paperclip.options[:command_path] = "/usr/local/bin/"
+  config.web_console.whitelisted_ips = '10.0.2.2'
 end

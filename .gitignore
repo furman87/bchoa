@@ -12,4 +12,7 @@
 !/log/.keep
 /tmp
 /db/backup
-config/application.yml
+
+# Ignore application configuration
+/config/application.yml
+/public/system/article_assets

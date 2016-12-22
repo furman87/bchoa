@@ -1,5 +1,30 @@
+html {
+  height: 100%;
+}
+
 body {
   padding-top: 50px;
+  height: 100%;
+}
+
+div.article {
+  border-top: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+
+/* Set the fixed height of the footer here */
+footer {
+  height: 50px;
+  background-color: #001a00;
+  color: #9d9d9d;
+}
+
+form.simple_form {
+  margin-bottom: 10px;
+}
+
+header > h3 {
+  display: inline-block;
 }
 
 img#logo {
@@ -9,18 +34,27 @@ img#logo {
   margin-top: -10px;
 }
 
-header > h3 {
-  display: inline-block;
+img.img-fluid {
+  display: block;
+  // width: 100%;
+  // border: 1px solid #ddd;
+  // padding: 15px;
 }
 
-div.article {
-  border-top: 1px solid #ddd;
-  margin-bottom: 10px;
-}
-
-#menu {
+ul.dropdown-menu {
   background-color: #001a00;
+  li > a {
+    color: #9d9d9d;
+  }
+  li > a:hover {
+    background-color: #001a00;
+    color: #fff;
+  }
 }
+
+// ul.dropdown-menu > li > a {
+//   color: #9d9d9d;
+// }
 
 #article-body {
   height: 300px;
@@ -29,6 +63,24 @@ div.article {
 #attachment-header {
   border-top: 1px solid #ddd;
   padding-top: 10px;
+}
+
+#copyright {
+  padding-top: 20px;
+  font-size: 0.75em;
+}
+
+#menu {
+  background-color: #001a00;
+}
+
+#wrap {
+  min-height: 100%;
+  height: auto;
+  /* Negative indent footer by its height */
+  margin: 0 auto -50px;
+  /* Pad bottom by footer height */
+  padding: 0 0 50px;
 }
 
 .alert {
@@ -74,7 +126,7 @@ div.article {
 }
 
 .mce-content-body {
-  padding-top: 10px;
+  padding: 10px;
 }
 
 .news {

@@ -20,6 +20,8 @@ gem 'cocoon', '~> 1.2', '>= 1.2.9'
 gem 'acts-as-taggable-on', '~> 3.5'
 gem 'bootstrap-datepicker-rails', '~> 1.6', '>= 1.6.1.1'
 gem 'tinymce-rails'
+gem 'figaro', '~> 1.1', '>= 1.1.1'
+gem 'chosen-rails', '~> 1.5', '>= 1.5.2'
 
 group :development, :test do
   gem 'byebug'

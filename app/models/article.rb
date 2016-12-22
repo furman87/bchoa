@@ -2,6 +2,8 @@ class Article < ActiveRecord::Base
   include Authority::Abilities
   acts_as_taggable
 
+  attr_accessor :mail_groups, :mail_users, :is_mail
+
   belongs_to :user
   has_many :article_assets, -> { order(:display_order) }
   accepts_nested_attributes_for :article_assets, reject_if: :all_blank, allow_destroy: true

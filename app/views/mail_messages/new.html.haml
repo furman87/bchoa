@@ -1,0 +1,21 @@
+.col-md-9
+    %h2 New Mail
+
+    = simple_form_for @mail_message, url: "/mail/create", html: { multipart: true } do |f|
+        = f.error_notification
+        .form-inputs
+            = f.hidden_field :user_id
+            = f.hidden_field :tag_list
+            = f.hidden_field :is_mail
+
+            -# = f.input :mail_message_group_ids, collection: @mail_groups, label_method: :name, value_method: :id, input_html: { multiple: true, class: "chosen-select" }
+            -# = f.input :mail_message_user_ids, collection: @mail_users, label_method: :email_recipient, value_method: :id, input_html: { multiple: true, class: "chosen-select" }
+            = f.input :mail_groups, collection: @mail_groups, label_method: :name, value_method: :id, input_html: { multiple: true, class: "chosen-select" }
+            = f.input :mail_users, collection: @mail_users, label_method: :email_recipient, value_method: :id, input_html: { multiple: true, class: "chosen-select" }
+            = f.input :title
+            = f.input :body, input_html: { class: "tinymce", rows: 20, cols: 120 }
+
+        .form-actions
+            = f.button :submit, "Send Mail", class: "btn btn-primary"
+
+= tinymce
