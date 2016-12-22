@@ -7,6 +7,22 @@ body {
   height: 100%;
 }
 
+div.article {
+  border-top: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+
+/* Set the fixed height of the footer here */
+footer {
+  height: 50px;
+  background-color: #001a00;
+  color: #9d9d9d;
+}
+
+header > h3 {
+  display: inline-block;
+}
+
 img#logo {
   height: 40px;
   float: left;
@@ -21,21 +37,20 @@ img.img-fluid {
   // padding: 15px;
 }
 
-header > h3 {
-  display: inline-block;
-}
-
-div.article {
-  border-top: 1px solid #ddd;
-  margin-bottom: 10px;
-}
-
-/* Set the fixed height of the footer here */
-footer {
-  height: 50px;
+ul.dropdown-menu {
   background-color: #001a00;
-  color: #9d9d9d;
+  li > a {
+    color: #9d9d9d;
+  }
+  li > a:hover {
+    background-color: #001a00;
+    color: #fff;
+  }
 }
+
+// ul.dropdown-menu > li > a {
+//   color: #9d9d9d;
+// }
 
 #article-body {
   height: 300px;
