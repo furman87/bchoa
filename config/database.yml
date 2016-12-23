@@ -63,4 +63,4 @@ production:
   host: localhost
   database: bchoa_production
   username: deploy
-  password: ENV['bchoa_database_password']
+  password: <%= ENV['bchoa_database_password'] %>
