@@ -93,4 +93,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   Haml::Template.options[:ugly] = true
+  Paperclip.options[:command_path] = "/usr/local/bin/"
 end
