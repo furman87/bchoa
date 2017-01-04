@@ -1,5 +1,5 @@
 class Street < ActiveRecord::Base
-  has_many :users
+  has_many :residences
 
   def name
     street_name

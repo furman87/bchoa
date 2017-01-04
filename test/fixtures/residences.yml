@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  street_number: 1
+  street_id: 1
+  lot: 1
+  block: 1
+  purchase_year: 1
+  leasing_user_id: 1
+
+two:
+  street_number: 1
+  street_id: 1
+  lot: 1
+  block: 1
+  purchase_year: 1
+  leasing_user_id: 1

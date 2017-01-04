@@ -13,7 +13,8 @@ class User < ActiveRecord::Base
   has_many :mail_group_members
   has_many :mail_groups, through: :mail_group_members
 
-  belongs_to :street, :foreign_key => "street_id"
+  has_many :residence_users
+  has_many :residences, through: :residence_users
 
   validates_format_of :phone, with: /\d{3}-\d{3}-\d{4}/, allow_blank: true, message: "format must be 999-999-9999"
   validates_format_of :spouse_phone, with: /\d{3}-\d{3}-\d{4}/, allow_blank: true, message: "format must be 999-999-9999"
@@ -29,20 +30,15 @@ class User < ActiveRecord::Base
   end
 
   def email_recipient
-    # %("#{first_last}" <#{email}>)
-    first_last
+    %("#{first_last}" <#{email}>)
   end
 
   def address
-    street_number.to_s + " " +street.name
+    residence.street_number.to_s + " " + residence.street.name
   end
 
   def display_phone(display_private)
     display_private || !phone_is_private ? phone : ""
-  end
-
-  def display_spouse_phone(display_private)
-    display_private || !spouse_phone_is_private ? spouse_phone : ""
   end
 
   def self.import(filename)

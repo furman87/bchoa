@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161208121536) do
+ActiveRecord::Schema.define(version: 20161224005647) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,18 +87,24 @@ ActiveRecord::Schema.define(version: 20161208121536) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "mail_message_groups", force: :cascade do |t|
-    t.integer  "mail_message_id"
-    t.integer  "mail_group_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+  create_table "residence_users", force: :cascade do |t|
+    t.integer "residence_id"
+    t.integer "user_id"
+    t.boolean "is_resident",  default: true
+    t.boolean "is_owner",     default: true
+    t.integer "year"
   end
 
-  create_table "mail_message_users", force: :cascade do |t|
-    t.integer  "mail_message_id"
-    t.integer  "user_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+  add_index "residence_users", ["residence_id"], name: "index_residence_users_on_residence_id", using: :btree
+  add_index "residence_users", ["user_id"], name: "index_residence_users_on_user_id", using: :btree
+
+  create_table "residences", force: :cascade do |t|
+    t.integer  "street_number"
+    t.integer  "street_id"
+    t.integer  "lot"
+    t.integer  "block"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "roles", force: :cascade do |t|
