@@ -92,7 +92,6 @@ ActiveRecord::Schema.define(version: 20161224005647) do
     t.integer "user_id"
     t.boolean "is_resident",  default: true
     t.boolean "is_owner",     default: true
-    t.integer "year"
   end
 
   add_index "residence_users", ["residence_id"], name: "index_residence_users_on_residence_id", using: :btree
@@ -103,6 +102,7 @@ ActiveRecord::Schema.define(version: 20161224005647) do
     t.integer  "street_id"
     t.integer  "lot"
     t.integer  "block"
+    t.integer  "purchase_year"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end

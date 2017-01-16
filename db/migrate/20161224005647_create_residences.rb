@@ -5,6 +5,7 @@ class CreateResidences < ActiveRecord::Migration
       t.integer :street_id
       t.integer :lot
       t.integer :block
+      t.integer :purchase_year
 
       t.timestamps null: false
     end
@@ -14,7 +15,6 @@ class CreateResidences < ActiveRecord::Migration
       t.integer :user_id, index: true
       t.boolean :is_resident, default: true
       t.boolean :is_owner, default: true
-      t.integer :year
     end
   end
 end

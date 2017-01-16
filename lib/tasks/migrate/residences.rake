@@ -6,7 +6,8 @@ namespace :migrate do
         street_number: user.street_number,
         street_id: user.street_id,
         lot: user.lot,
-        block: user.block
+        block: user.block,
+        purchase_year: user.purchase_year
       )
 
       ResidenceUser.create(
@@ -14,7 +15,6 @@ namespace :migrate do
         residence: residence,
         is_owner: true,
         is_resident: true,
-        year: user.purchase_year
       )
 
       unless user.spouse_name.blank?
@@ -42,8 +42,7 @@ namespace :migrate do
             user: spouse_user,
             residence: residence,
             is_owner: true,
-            is_resident: true,
-            year: user.purchase_year
+            is_resident: true
           )
           puts "Created ResidenceUser #{spouse_user.id}, #{residence.id}"
         end

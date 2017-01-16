@@ -12,14 +12,14 @@
                 %th Year
 
         %tbody
-            - @residents.each do |resident|
+            - @residences.each do |residence|
                 %tr
                     -# - if current_user.can_update?(resident)
                     - if @can_update_user
-                        %td= link_to resident.last_name_first, edit_user_registration_path
+                        %td= link_to residence.listing_names, edit_user_registration_path
                     - else
-                        %td= resident.last_name_first
-                    %td= resident.address
-                    %td.wrap<= resident.email + (resident.spouse_email? ? "\n" + resident.spouse_email : "")
-                    %td.wrap<= resident.display_phone(@can_display_private) + (resident.spouse_phone? ? "\n" + resident.display_spouse_phone(@can_display_private) : "")
-                    %td= resident.purchase_year
+                        %td= residence.listing_names
+                    %td= residence.address
+                    %td.wrap<= residence.listing_emails
+                    %td.wrap<= residence.listing_phones(@can_display_private)
+                    %td= residence.purchase_year
