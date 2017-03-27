@@ -7,9 +7,9 @@ class Residence < ActiveRecord::Base
     last_name = ""
     return_name = ""
 
-    users.each do |u|
-      return_name += "#{u.last_name == last_name ? " &" : u.last_name + ','} #{u.first_name}"
-      last_name = u.last_name
+    residence_users.each do |u|
+      return_name += "#{u.user.last_name == last_name ? " &" : u.user.last_name + ','} #{u.user.first_name}"
+      last_name = u.user.last_name
     end
 
     return_name

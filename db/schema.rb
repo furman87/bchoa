@@ -90,8 +90,9 @@ ActiveRecord::Schema.define(version: 20161224005647) do
   create_table "residence_users", force: :cascade do |t|
     t.integer "residence_id"
     t.integer "user_id"
-    t.boolean "is_resident",  default: true
-    t.boolean "is_owner",     default: true
+    t.boolean "is_resident",   default: true
+    t.boolean "is_owner",      default: true
+    t.integer "display_order", default: 1
   end
 
   add_index "residence_users", ["residence_id"], name: "index_residence_users_on_residence_id", using: :btree

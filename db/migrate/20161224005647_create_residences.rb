@@ -15,6 +15,7 @@ class CreateResidences < ActiveRecord::Migration
       t.integer :user_id, index: true
       t.boolean :is_resident, default: true
       t.boolean :is_owner, default: true
+      t.integer :display_order, default: 1
     end
   end
 end
