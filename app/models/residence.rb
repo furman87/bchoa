@@ -3,13 +3,25 @@ class Residence < ActiveRecord::Base
   has_many :users, through: :residence_users
   belongs_to :street #, :foreign_key => "street_id"
 
+  def self.with_street
+    includes(:street).joins(:street)
+  end
+
+  def self.by_user
+    includes(:users).joins(:users).order("users.last_name, residences.street_number")
+  end
+  
+  def self.by_user_display_order
+    includes(:residence_users).joins(:residence_users).order("residence_users.display_order")
+  end
+
   def listing_names
     last_name = ""
     return_name = ""
 
-    residence_users.each do |u|
-      return_name += "#{u.user.last_name == last_name ? " &" : u.user.last_name + ','} #{u.user.first_name}"
-      last_name = u.user.last_name
+    users.each do |u|
+      return_name += "#{u.last_name == last_name ? " &" : u.last_name + ','} #{u.first_name}"
+      last_name = u.last_name
     end
 
     return_name
