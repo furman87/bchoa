@@ -8,7 +8,7 @@ class Residence < ActiveRecord::Base
   end
 
   def self.by_user
-    includes(:users).joins(:users).order("users.last_name, residences.street_number")
+    includes(:users).joins(:users).order("users.last_name, users.first_name, residences.street_number")
   end
   
   def self.by_user_display_order
