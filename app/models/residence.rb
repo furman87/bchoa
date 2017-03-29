@@ -8,18 +8,23 @@ class Residence < ActiveRecord::Base
   end
 
   def self.by_user
-    includes(:users).joins(:users).order("users.last_name, users.first_name, residences.street_number")
+    # includes(:users).joins(:users).order("users.last_name, users.first_name")
+    includes(:users).joins(:users).order("users.last_name")
   end
   
-  def self.by_user_display_order
+  def self.with_residence_users
     includes(:residence_users).joins(:residence_users).order("residence_users.display_order")
   end
 
   def listing_names
     last_name = ""
     return_name = ""
+    # residents = residence_users.sort {|x, y| x.display_order <=> y.display_order}
+    residents = users
 
-    users.each do |u|
+    residents.each do |u|
+      # return_name += "#{u.user.last_name == last_name ? " &" : u.user.last_name + ','} #{u.user.first_name}"
+      # last_name = u.user.last_name
       return_name += "#{u.last_name == last_name ? " &" : u.last_name + ','} #{u.first_name}"
       last_name = u.last_name
     end
