@@ -35,7 +35,9 @@ class Residence < ActiveRecord::Base
   def listing_emails
     emails = ""
     users.each do |u|
-      emails += emails.length ? "\n#{u.email}" : u.email
+      if !u.email.include? ENV['ignore_listing_domain']
+        emails += emails.length ? "\n#{u.email}" : u.email
+      end
     end
     emails
   end
