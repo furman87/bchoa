@@ -21,6 +21,6 @@ class Article < ActiveRecord::Base
   end
 
   def self.only_private(show_private)
-    where("is_private = false or ?", show_private)
+    where("coalesce(is_private, false) = false or ?", show_private)
   end
 end
