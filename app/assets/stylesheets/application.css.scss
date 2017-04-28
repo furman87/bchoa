@@ -13,9 +13,10 @@
  //= require bootstrap-datepicker
  //= require custom
  //= require chosen
+ //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
    */
 
  // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
  @import "bootstrap-sprockets";
  @import "bootstrap";
-// @import "chosen";
+ // @import "chosen";

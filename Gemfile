@@ -22,6 +22,7 @@ gem 'bootstrap-datepicker-rails', '~> 1.6', '>= 1.6.1.1'
 gem 'tinymce-rails'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'chosen-rails', '~> 1.5', '>= 1.5.2'
+gem 'jquery-datatables-rails', '~> 3.4'
 
 group :development, :test do
   gem 'byebug'
