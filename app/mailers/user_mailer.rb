@@ -19,4 +19,15 @@ class UserMailer < ApplicationMailer
 
     mail(to: %("Butler Creek" <btlrcreek@yahoo.com>), bcc: unique_users, subject: @mail_message.title)
   end
+
+  def send_password(user)
+    @user = user
+    @password = User.generate_password
+    @user.password = @password
+    @user.save
+    @admin = BoardMember.web_admin
+
+    mail(to: @user.email, subject: "Butler Creek password")
+  end
+  
 end

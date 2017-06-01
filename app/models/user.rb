@@ -37,13 +37,17 @@ class User < ActiveRecord::Base
   end
 
   def display_phone(display_private)
-    display_private || !phone_is_private ? phone : ""
+    (display_private || !phone_is_private) ? (phone || "") : ""
+  end
+
+  def self.generate_password
+    [*'0'..'9', *'a'..'z', *'A'..'Z'].sample(12).join
   end
 
   def self.import(filename)
     CSV.foreach(filename, headers: true) do |row|
       User.create! row.to_hash do |u|
-        u.leasing_owner = ('a'..'z').to_a.shuffle[0,8].join
+        u.leasing_owner = generate_password
         u.password = u.leasing_owner
       end
     end

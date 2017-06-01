@@ -7,6 +7,9 @@
 # Ignore bundler config.
 /.bundle
 
+# Ignore vagrant files
+/.vagrant
+
 # Ignore all logfiles and tempfiles and db backups
 /log/*
 !/log/.keep

@@ -43,11 +43,7 @@ class Residence < ActiveRecord::Base
   end
 
   def listing_phones(display_private)
-    phones = ""
-    users.each do |u|
-      phones += phones.length ? "\n#{u.display_phone(display_private)}" : u.display_phone(display_private)
-    end
-    phones
+    users.map {|u| u.display_phone(display_private)}.uniq.join("\n")
   end
 
   def address
