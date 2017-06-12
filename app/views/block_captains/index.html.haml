@@ -13,6 +13,6 @@
             - @block_captains.each do |captain|
                 %tr
                     %td= captain.description
-                    %td= (captain.spouse ? captain.user.spouse_name : captain.user.first_name) + " " + captain.user.last_name
-                    %td= captain.spouse && captain.user.spouse_email ? captain.user.spouse_email : captain.user.email
-                    %td= captain.spouse && captain.user.spouse_phone ? captain.user.spouse_phone : captain.user.phone
+                    %td= captain.user.first_last
+                    %td= captain.user.email
+                    %td.wrap= captain.user.phone

@@ -13,6 +13,6 @@
             - @board_members.each do |member|
                 %tr
                     %td= member.description
-                    %td= board_name(member)
-                    %td= board_email(member)
-                    %td= board_phone(member)
+                    %td= member.user.first_last
+                    %td= member.user.email
+                    %td.wrap= member.user.phone

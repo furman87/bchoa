@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :residences
+    resources :residence_users
+    resources :users, except: [:index, :show]
+  end
+
   root 'articles#welcome'
   get 'board', to: 'board_members#index', as: 'board'
   get 'block_captains', to: 'block_captains#index', as: 'block_captains'

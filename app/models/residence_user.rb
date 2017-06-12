@@ -1,4 +1,5 @@
 class ResidenceUser < ActiveRecord::Base
+  include Authority::Abilities
   belongs_to :user
   belongs_to :residence
 
@@ -9,4 +10,13 @@ class ResidenceUser < ActiveRecord::Base
   def self.by_display_order
     order("residence_users.display_order")
   end
+
+  def self.only_owners
+    where(is_owner: true)
+  end
+
+  def self.only_residents
+    where(is_resident: true)
+  end
+
 end

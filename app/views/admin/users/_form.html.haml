@@ -1,0 +1,15 @@
+= simple_form_for @user, url: admin_user_path do |f|
+    = f.error_notification
+    
+        .form-inputs
+            = f.input :email, required: true, autofocus: true
+            .form-inputs.row
+                = f.input :first_name, required: true, wrapper_html: {class: "col-md-6"}
+                = f.input :last_name, required: true, wrapper_html: {class: "col-md-6"}
+            .form-inputs.row
+                = f.input :phone, required: true, wrapper_html: {class: "col-md-6 tight-row"}
+            .form-inputs.row
+                = f.input :phone_is_private, wrapper_html: {class: "col-md-6"}
+
+        .form-actions
+            = f.button :submit, "Update", class: "btn btn-primary"

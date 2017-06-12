@@ -1,0 +1,32 @@
+.row
+    .col-sm-6.admin
+        %h1= @residence.address
+        = link_to "Edit", edit_admin_residence_path, class: "btn btn-primary btn-xs admin-header"
+        %hr
+
+        .row
+            .col-sm-6
+                %h3 Details
+                %p
+                    %strong Lot
+                    = @residence.lot
+                %p
+                    %strong Block
+                    = @residence.block
+                %p
+                    %strong Purchase Year
+                    = @residence.purchase_year
+
+            .col-sm-6
+                %h3 Related Users
+                = link_to "Add", new_admin_residence_user_path(residence_id: @residence.id), class: "btn btn-primary btn-xs admin-header"
+
+                - @users.each do |u|
+                    %p
+                        %span= u.user.first_last
+                        - if u.is_resident
+                            %span.glyphicon.glyphicon-home{title: "Resident"}
+                        - if u.is_owner
+                            %span.glyphicon.glyphicon-usd{title: "Owner"}
+                        = link_to "Edit", edit_admin_residence_user_path(u.id), class: "btn btn-primary btn-xs"
+                        = link_to "Remove", admin_residence_user_path(u.id), method: :delete, class: "btn btn-primary btn-xs", data: { confirm: 'Are you sure?' }

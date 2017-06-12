@@ -71,6 +71,7 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1
   # PATCH/PUT /articles/1.json
   def update
+    authorize_action_for(@article)
     if @article.update(article_params)
       redirect_to session.delete(:return_to), notice: 'Article was successfully updated.'
     else
@@ -85,7 +86,6 @@ class ArticlesController < ApplicationController
     session[:return_to] ||= request.referer
     @article.destroy
     redirect_to session.delete(:return_to), notice: 'Article was successfully destroyed.'
-    head :no_content
   end
 
   private

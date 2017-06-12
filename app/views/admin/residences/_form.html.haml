@@ -1,0 +1,14 @@
+= simple_form_for @residence, url: admin_residence_path do |f|
+    = f.error_notification
+
+    .form-inputs
+        .form-inputs.row
+            = f.input :street_number, wrapper_html: {class: "col-md-6"}
+            = f.input :street_id, collection: Street.order(:street_name), wrapper_html: {class: "col-md-6"}
+        .form-inputs.row
+            = f.input :lot, wrapper_html: {class: "col-md-4"}
+            = f.input :block, wrapper_html: {class: "col-md-4"}
+            = f.input :purchase_year, wrapper_html: {class: "col-md-4"}
+
+    .form-actions
+        = f.button :submit, class: "btn btn-primary"

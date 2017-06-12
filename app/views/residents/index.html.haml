@@ -10,6 +10,8 @@
                 %th Email
                 %th Phone
                 %th Year
+                - if @can_update_user
+                    %th
 
         %tbody
             - @residences.each do |residence|
@@ -23,3 +25,5 @@
                     %td.wrap<= residence.listing_emails
                     %td.wrap<= residence.listing_phones(@can_display_private)
                     %td= residence.purchase_year
+                    - if @can_update_user
+                        %td= link_to "Edit", admin_residence_path(residence.id), class: "btn btn-primary btn-xs admin-header"

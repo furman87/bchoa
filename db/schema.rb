@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170331025907) do
+ActiveRecord::Schema.define(version: 20170611170232) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,7 +44,6 @@ ActiveRecord::Schema.define(version: 20170331025907) do
   create_table "block_captains", force: :cascade do |t|
     t.string   "description",   limit: 100
     t.integer  "user_id"
-    t.boolean  "spouse"
     t.integer  "display_order"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
@@ -161,20 +160,7 @@ ActiveRecord::Schema.define(version: 20170331025907) do
     t.datetime "updated_at",                                      null: false
     t.string   "last_name",               limit: 50
     t.string   "first_name",              limit: 50
-    t.string   "spouse_name",             limit: 75
-    t.integer  "street_number"
-    t.integer  "street_id"
-    t.integer  "lot"
-    t.integer  "block"
     t.string   "phone",                   limit: 15
-    t.string   "spouse_phone",            limit: 15
-    t.string   "spouse_email",            limit: 50
-    t.integer  "purchase_year"
-    t.boolean  "leased"
-    t.string   "leasing_owner",           limit: 50
-    t.string   "leasing_address",         limit: 75
-    t.string   "leasing_phone",           limit: 15
-    t.string   "leasing_email",           limit: 50
     t.boolean  "email_is_private"
     t.boolean  "spouse_email_is_private"
     t.boolean  "phone_is_private"

@@ -1,0 +1,12 @@
+= simple_form_for @residence_user, url: locals[:url] do |f|
+    = f.error_notification
+    = f.input :residence_id, as: :hidden
+
+    .form-inputs
+        = f.input :user_id, collection: User.order(:last_name, :first_name), label_method: :last_first, value_method: :id, include_blank: false
+        = f.input :is_resident
+        = f.input :is_owner
+        = f.input :display_order
+
+    .form-actions
+        = f.button :submit, "Save", class: "btn btn-primary"
