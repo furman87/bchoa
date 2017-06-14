@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :residences
     resources :residence_users
-    resources :users, except: [:index, :show]
+    resources :users
   end
 
   root 'articles#welcome'

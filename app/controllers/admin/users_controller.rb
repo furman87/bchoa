@@ -3,6 +3,7 @@ class Admin::UsersController < ApplicationController
 
   def index
     @users = User.order(:last_name, :first_name)
+    @can_update_user = current_user.can_update?(User)
   end
 
   def new
