@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :set_return_to, only: [:new, :edit, :destroy]
   before_action :authenticate_user!, except: [:news, :rules, :welcome, :acc, :newsletters]
   layout Proc.new{ ['welcome'].include?(action_name) ? 'welcome' : 'application' }
 
@@ -47,13 +48,11 @@ class ArticlesController < ApplicationController
   def new
     @article = current_user.articles.build(start_date: Date.today, end_date: Date.today + 30, display_order: 1)
     authorize_action_for(@article)
-    session[:return_to] ||= request.referer
   end
 
   # GET /articles/1/edit
   def edit
     authorize_action_for(@article)
-    session[:return_to] ||= request.referer
   end
 
   # POST /articles
@@ -83,7 +82,6 @@ class ArticlesController < ApplicationController
   # DELETE /articles/1.json
   def destroy
     authorize_action_for(@article)
-    session[:return_to] ||= request.referer
     @article.destroy
     redirect_to session.delete(:return_to), notice: 'Article was successfully destroyed.'
   end
@@ -92,6 +90,10 @@ class ArticlesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_article
       @article = Article.find(params[:id])
+    end
+    
+    def set_return_to
+      session[:return_to] ||= request.referer
     end
 
     def get_articles(tag, show_private = user_signed_in?)

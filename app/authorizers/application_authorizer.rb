@@ -15,31 +15,52 @@ class ApplicationAuthorizer < Authority::Authorizer
 
     # Class methods: can this user at least sometimes create a Schedule?
     def self.creatable_by?(user)
-      user.has_any_role? :admin, :editor
+      Rails.logger.debug "In application_authorizer.rb self.creatable_by?"
+      return_value = user.has_any_role? :admin, :editor
+      Rails.logger.debug "return_value = #{return_value}"
+      return_value
     end
 
     def self.updatable_by?(user)
-      user.has_any_role? :admin, :editor
+      Rails.logger.debug "In application_authorizer.rb self.updatable_by?"
+      return_value = user.has_any_role? :admin, :editor
+      Rails.logger.debug "return_value = #{return_value}"
+      return_value
     end
 
     def self.readable_by?(user)
-      user.has_any_role? :admin, :editor, :board
+      Rails.logger.debug "In application_authorizer.rb self.readable_by?"
+      return_value = user.has_any_role? :admin, :editor, :board
+      Rails.logger.debug "return_value = #{return_value}"
+      return_value
     end
 
     # Instance methods
     def creatable_by?(user)
-      user.has_any_role? :admin, :editor
+      Rails.logger.debug "In application_authorizer.rb creatable_by?"
+      return_value = user.has_any_role? :admin, :editor
+      Rails.logger.debug "return_value = #{return_value}"
+      return_value
     end
 
     def updatable_by?(user)
-      user.has_any_role? :admin, :editor
+      Rails.logger.debug "In application_authorizer.rb updatable_by?"
+      return_value = user.has_any_role? :admin, :editor
+      Rails.logger.debug "return_value = #{return_value}"
+      return_value
     end
 
     def deletable_by?(user)
-      user.has_any_role? :admin
+      Rails.logger.debug "In application_authorizer.rb deletable_by?"
+      return_value = user.has_any_role? :admin
+      Rails.logger.debug "return_value = #{return_value}"
+      return_value
     end
 
     def readable_by?(user)
-      user.has_any_role? :admin, :editor, :board
+      Rails.logger.debug "In application_authorizer.rb readable_by?"
+      return_value = user.has_any_role? :admin, :editor, :board
+      Rails.logger.debug "return_value = #{return_value}"
+      return_value
     end
 end

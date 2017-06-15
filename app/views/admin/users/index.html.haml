@@ -1,5 +1,7 @@
 .col-md-12.admin
     %h1 User Administration
+    = link_to new_admin_user_path, title: "Add", class: "btn btn-primary btn-sm admin-header" do
+        %span.glyphicon.glyphicon-plus
 
     -# %table.table.table-striped
     %table.table#residents-list
@@ -19,7 +21,10 @@
                     %td.wrap= user.phone
                     - if @can_update_user
                         %td
-                            = link_to edit_admin_user_path(user) do
-                                %span.glyphicon.glyphicon-pencil{title: "Edit"}
+                            = link_to edit_admin_user_path(user), title: "Edit", class: "btn btn-primary btn-sm" do
+                                %span.glyphicon.glyphicon-edit
+                                
+                            = link_to admin_user_path(user), method: :delete, title: "Delete", class: "btn btn-danger btn-sm", data: { confirm: 'Are you sure?' } do
+                                %span.glyphicon.glyphicon-trash
                     - else
                         %td

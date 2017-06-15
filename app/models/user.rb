@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   include Authority::UserAbilities
   include Authority::Abilities
   rolify
+  authorizer = ApplicationAuthorizer
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

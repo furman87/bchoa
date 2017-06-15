@@ -1,7 +1,7 @@
 .col-md-9
     %h2 New Mail
 
-    = simple_form_for @mail_message, url: "/mail/create", html: { multipart: true } do |f|
+    = simple_form_for @mail_message, url: "/admin/mail/create", html: { multipart: true } do |f|
         = f.error_notification
         .form-inputs
             = f.hidden_field :user_id

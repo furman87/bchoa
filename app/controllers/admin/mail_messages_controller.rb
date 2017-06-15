@@ -1,4 +1,6 @@
-class MailMessagesController < ApplicationController
+class Admin::MailMessagesController < ApplicationController
+  before_action :authenticate_user!
+
   def show
   end
 

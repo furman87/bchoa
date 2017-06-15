@@ -1,15 +1,18 @@
-= simple_form_for @user, url: admin_user_path do |f|
+= simple_form_for @user, url: locals[:url] do |f|
     = f.error_notification
+    = f.input :created_at, as: :hidden
+    = f.input :updated_at, as: :hidden
+    = f.input :password, as: :hidden
     
-        .form-inputs
-            = f.input :email, required: true, autofocus: true
-            .form-inputs.row
-                = f.input :first_name, required: true, wrapper_html: {class: "col-md-6"}
-                = f.input :last_name, required: true, wrapper_html: {class: "col-md-6"}
-            .form-inputs.row
-                = f.input :phone, required: true, wrapper_html: {class: "col-md-6 tight-row"}
-            .form-inputs.row
-                = f.input :phone_is_private, wrapper_html: {class: "col-md-6"}
+    .form-inputs
+        = f.input :email, required: true, autofocus: true
+        .form-inputs.row
+            = f.input :first_name, required: true, wrapper_html: {class: "col-md-6"}
+            = f.input :last_name, required: true, wrapper_html: {class: "col-md-6"}
+        .form-inputs.row
+            = f.input :phone, wrapper_html: {class: "col-md-6 tight-row"}
+        = f.input :phone_is_private
+        = f.input :email_is_private
 
-        .form-actions
-            = f.button :submit, "Update", class: "btn btn-primary"
+    .form-actions
+        = f.button :submit, "Save", class: "btn btn-primary"
