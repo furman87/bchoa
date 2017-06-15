@@ -7,6 +7,10 @@ body {
   height: 100%;
 }
 
+h1, h2, h3 {
+  font-family: 'Oswald', sans-serif;
+}
+
 div.article {
   border-top: 1px solid #ddd;
   margin-bottom: 15px;
@@ -138,10 +142,6 @@ ul.dropdown-menu {
 
 .wrap {
   white-space: pre-line;
-}
-
-h1, h2, h3 {
-  font-family: 'Oswald', sans-serif;
 }
 
 .admin {
