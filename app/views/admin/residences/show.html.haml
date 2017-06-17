@@ -1,12 +1,14 @@
 .row
     .col-sm-6.admin
         %h1= @residence.address
-        = link_to "Edit", edit_admin_residence_path, class: "btn btn-primary btn-xs admin-header"
+        = link_to edit_admin_residence_path, title: "Edit", class: "btn btn-primary btn-xs admin-header" do
+            %span.glyphicon.glyphicon-edit
         %hr
 
         .row
             .col-sm-6
                 %h3 Details
+                %hr
                 %p
                     %strong Lot
                     = @residence.lot
@@ -19,7 +21,9 @@
 
             .col-sm-6
                 %h3 Related Users
-                = link_to "Add", new_admin_residence_user_path(residence_id: @residence.id), class: "btn btn-primary btn-xs admin-header"
+                = link_to new_admin_residence_user_path(residence_id: @residence.id), title: "Add", class: "btn btn-primary btn-xs admin-header" do
+                    %span.glyphicon.glyphicon-plus
+                %hr
 
                 - @users.each do |u|
                     %p
@@ -28,5 +32,7 @@
                             %span.glyphicon.glyphicon-home{title: "Resident"}
                         - if u.is_owner
                             %span.glyphicon.glyphicon-usd{title: "Owner"}
-                        = link_to "Edit", edit_admin_residence_user_path(u.id), class: "btn btn-primary btn-xs"
-                        = link_to "Remove", admin_residence_user_path(u.id), method: :delete, class: "btn btn-primary btn-xs", data: { confirm: 'Are you sure?' }
+                        = link_to edit_admin_residence_user_path(u.id), title: "Edit", class: "btn btn-primary btn-xs" do
+                            %span.glyphicon.glyphicon-edit
+                        = link_to admin_residence_user_path(u.id), title: "Remove", method: :delete, class: "btn btn-danger btn-xs", data: { confirm: 'Are you sure?' } do
+                            %span.glyphicon.glyphicon-trash

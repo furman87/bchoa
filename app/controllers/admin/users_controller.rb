@@ -11,7 +11,7 @@ class Admin::UsersController < ApplicationController
 
   def new
     @user = User.new
-    @user.created_at = DateTime.now
+    @user.created_at = DateTime.zone.now
     @user.updated_at = @user.created_at
     authorize_action_for(@user)
   end
@@ -22,8 +22,7 @@ class Admin::UsersController < ApplicationController
 
   def create
     if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
-      params[:user][:password] = "changeme!"
-      # params[:user][:password] = Devise.friendly_token[0,20]
+      params[:user][:password] = Devise.friendly_token[0,20]
     end
 
     @user = User.new(user_params)
@@ -38,6 +37,12 @@ class Admin::UsersController < ApplicationController
 
   def update
     authorize_action_for(@user)
+
+    if params[:user][:password].blank?
+      params[:user].delete(:password)
+      params[:user].delete(:password_confirmation)
+    end
+
     if @user.update(user_params)
       redirect_to session.delete(:return_to), notice: 'User was successfully updated.'
     else

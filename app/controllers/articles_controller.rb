@@ -2,7 +2,6 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
   before_action :set_return_to, only: [:new, :edit, :destroy]
   before_action :authenticate_user!, except: [:news, :rules, :welcome, :acc, :newsletters]
-  layout Proc.new{ ['welcome'].include?(action_name) ? 'welcome' : 'application' }
 
   # GET /articles
   # GET /articles.json

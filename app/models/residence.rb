@@ -20,7 +20,7 @@ class Residence < ActiveRecord::Base
     order("users.first_name")
   end
 
-  def listing_names
+  def user_names
     residents = residence_users.with_user.only_residents
     test_last_name = ""
     return_name = ""
@@ -37,7 +37,7 @@ class Residence < ActiveRecord::Base
     return_name
   end
 
-  def listing_emails
+  def user_emails
     emails = ""
     users.each do |u|
       if !u.email.include? ENV['ignore_listing_domain']
@@ -47,7 +47,7 @@ class Residence < ActiveRecord::Base
     emails
   end
 
-  def listing_phones(display_private)
+  def user_phones(display_private)
     users.map {|u| u.display_phone(display_private)}.uniq.join("\n")
   end
 
