@@ -5,13 +5,13 @@ class Admin::UsersController < ApplicationController
 
   def index
     authorize_action_for(User)
-    @users = User.includes(:residences).joins(:residences).order(:last_name, :first_name)
+    @users = User.order(:last_name, :first_name)
     @can_update_user = current_user.can_update?(User)
   end
 
   def new
     @user = User.new
-    @user.created_at = DateTime.zone.now
+    @user.created_at = DateTime.now
     @user.updated_at = @user.created_at
     authorize_action_for(@user)
   end
