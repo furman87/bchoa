@@ -23,8 +23,9 @@
                         %td
                             = link_to edit_admin_user_path(user), title: "Edit", class: "btn btn-primary btn-sm" do
                                 %span.glyphicon.glyphicon-edit
-                                
                             = link_to admin_user_path(user), method: :delete, title: "Delete", class: "btn btn-danger btn-sm", data: { confirm: 'Are you sure?' } do
                                 %span.glyphicon.glyphicon-trash
+                            = link_to admin_user_password_path(user), title: "Reset Password", class: "btn btn-warning btn-sm", data: { confirm: 'Are you sure?' } do
+                                %span.glyphicon.glyphicon-share-alt
                     - else
                         %td

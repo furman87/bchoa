@@ -22,11 +22,7 @@ class UserMailer < ApplicationMailer
 
   def send_password(user)
     @user = user
-    @password = User.generate_password
-    @user.password = @password
-    @user.save
     @admin = BoardMember.web_admin
-
     mail(to: @user.email, subject: "Butler Creek password")
   end
   

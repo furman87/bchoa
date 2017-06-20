@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :update, :destroy]
-  before_action :set_return_to, only: [:new, :edit, :destroy]
+  before_action :set_user, only: [:edit, :update, :destroy, :password]
+  before_action :set_return_to, only: [:new, :edit, :destroy, :password]
   before_action :authenticate_user!
 
   def index
@@ -54,6 +54,18 @@ class Admin::UsersController < ApplicationController
     authorize_action_for(@user)
     @user.destroy
     redirect_to session.delete(:return_to), notice: 'User was successfully deleted.'
+  end
+
+  def password
+    unless current_user.can?(:reset_password)
+      redirect_to :action => 'forbidden', :status => 403
+    end
+    password = User.generate_password
+    @user.password = password
+    if @user.save
+      UserMailer.send_password(@user).deliver
+      redirect_to session.delete(:return_to), notice: 'User password was successfully reset and emailed.'
+    end
   end
 
   private
