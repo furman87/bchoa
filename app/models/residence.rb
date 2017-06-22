@@ -21,7 +21,7 @@ class Residence < ActiveRecord::Base
   end
 
   def user_names
-    residents = residence_users.with_user.only_residents
+    residents = residence_users.with_user.only_residents.by_display_order
     test_last_name = ""
     return_name = ""
 
