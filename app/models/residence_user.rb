@@ -3,6 +3,10 @@ class ResidenceUser < ActiveRecord::Base
   belongs_to :user
   belongs_to :residence
 
+  def self.with_residence
+    includes(:residence).joins(:residence)
+  end
+
   def self.with_user
     includes(:user).joins(:user)
   end

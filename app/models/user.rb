@@ -19,6 +19,10 @@ class User < ActiveRecord::Base
 
   validates_format_of :phone, with: /\d{3}-\d{3}-\d{4}/, allow_blank: true, message: "format must be 999-999-9999"
 
+  def self.with_residences
+    joins(:residences).includes(:residences)
+  end
+
   def first_last
     "#{first_name} #{last_name}"
   end

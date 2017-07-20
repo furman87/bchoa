@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
+  root 'articles#welcome'
+  
   namespace :admin do
     resources :residences
     resources :residence_users
     resources :users
+    resources :mail_groups
     get 'users/password/:id', to: 'users#password', as: 'user_password'
     get 'mail/new', to: 'mail_messages#new', as: 'new_mail'
     post 'mail/create', to: 'mail_messages#create', as: 'create_mail'
   end
 
-  root 'articles#welcome'
   get 'board', to: 'board_members#index', as: 'board'
   get 'block_captains', to: 'block_captains#index', as: 'block_captains'
   get 'residents', to: 'residents#index', as: 'residents'
