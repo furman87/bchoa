@@ -3,43 +3,49 @@
 
 .row
     .col-md-5.admin
-        %h3 Residents Not In Group
-        %button.btn.btn-primary.btn-sm.admin-header#add-to-mail-group Add Selected to Group
-        %hr
-        %table.table.residents
-            %thead
-                %tr
-                    %th
-                    %th User
-            %tbody
-                - @non_members.each do |user|
+        =form_tag add_members_admin_mail_groups_path, method: :put do
+            =hidden_field_tag :id, @mail_group.id
+            %h3 Residents Not In Group
+            %button.btn.btn-primary.btn-sm.admin-header{type: "submit"} Add Selected to Group
+            %hr
+            %table.table.residents
+                %thead
                     %tr
-                        %td
-                            =check_box_tag "add_user_ids[]", user.id
-                        %td
-                            =user.last_first
-                            %br
-                            =user.residences.first.address
-                            %br
-                            =user.email
+                        %th
+                            =check_box_tag ""
+                        %th User
+                %tbody
+                    - @non_members.each do |user|
+                        %tr
+                            %td
+                                =check_box_tag "member_ids[]", user.id
+                            %td
+                                =user.last_first
+                                %br
+                                =user.residences.first.address
+                                %br
+                                =user.email
     .col-md-1
     .col-md-5.admin
-        %h3 Residents In Group
-        %button.btn.btn-primary.btn-sm.admin-header#remove-from-mail-group Remove Selected to Group
-        %hr
-        %table.table.residents
-            %thead
-                %tr
-                    %th
-                    %th User
-            %tbody
-                - @members.each do |user|
+        =form_tag remove_members_admin_mail_groups_path, method: :put do
+            =hidden_field_tag :id, @mail_group.id
+            %h3 Residents In Group
+            %button.btn.btn-primary.btn-sm.admin-header{type: "submit"} Remove Selected from Group
+            %hr
+            %table.table.residents
+                %thead
                     %tr
-                        %td
-                            =check_box_tag "remove_user_ids[]", user.id
-                        %td
-                            =user.last_first
-                            %br
-                            =user.residences.first.address
-                            %br
-                            =user.email
+                        %th
+                            =check_box_tag ""
+                        %th User
+                %tbody
+                    - @members.each do |user|
+                        %tr
+                            %td
+                                =check_box_tag "member_ids[]", user.id
+                            %td
+                                =user.last_first
+                                %br
+                                =user.residences.first.address
+                                %br
+                                =user.email

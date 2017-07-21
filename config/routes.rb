@@ -5,7 +5,12 @@ Rails.application.routes.draw do
     resources :residences
     resources :residence_users
     resources :users
-    resources :mail_groups
+    resources :mail_groups do
+      collection do
+        put 'add_members'
+        put 'remove_members'
+      end
+    end
     get 'users/password/:id', to: 'users#password', as: 'user_password'
     get 'mail/new', to: 'mail_messages#new', as: 'new_mail'
     post 'mail/create', to: 'mail_messages#create', as: 'create_mail'

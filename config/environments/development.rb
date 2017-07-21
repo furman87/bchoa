@@ -10,7 +10,7 @@ Rails.application.configure do
   config.eager_load = false
 
   # Full error reports are disabled and caching is turned on.
-  config.consider_all_requests_local       = false
+  config.consider_all_requests_local       = true
 
   # Show full error reports and disable caching.
   config.action_mailer.raise_delivery_errors = true

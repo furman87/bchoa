@@ -12,12 +12,4 @@ $(document).ready(function() {
 
   $(".dataTables_filter input").focus();
 
-  $("#add-to-mail-group").click(function () {
-    alert("Handler for click() called")
-  })
-
-  $("#remove-from-mail-group").click(function () {
-    alert("Handler for click() called")
-  })
-
 });
