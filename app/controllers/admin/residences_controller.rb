@@ -45,7 +45,7 @@ class Admin::ResidencesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_residence
-      @residence = Residence.with_street.with_user.find(params[:id])
+      @residence = Residence.with_street.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
