@@ -1,5 +1,7 @@
-.col-md-9
-    %h2 Mail Groups
+.col-md-9.admin
+    %h3 Mail Groups
+    = link_to new_admin_mail_group_path, title: "Add", class: "btn btn-primary btn-xs admin-header" do
+        %span.glyphicon.glyphicon-plus
 
     %table.table
         %thead
@@ -11,4 +13,8 @@
             - @mail_groups.each do |mail_group|
                 %tr
                     %td= mail_group.name
-                    %td= link_to "Edit", edit_admin_mail_group_path(mail_group)
+                    %td
+                        = link_to edit_admin_mail_group_path(mail_group), title: "Edit", class: "btn btn-primary btn-xs" do
+                            %span.glyphicon.glyphicon-edit
+                        = link_to admin_mail_group_path(mail_group), method: :delete, title: "Delete", class: "btn btn-danger btn-xs", data: { confirm: 'Are you sure?' } do
+                            %span.glyphicon.glyphicon-trash
