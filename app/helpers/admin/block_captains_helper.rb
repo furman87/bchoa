@@ -1,0 +1,2 @@
+module Admin::BlockCaptainsHelper
+end

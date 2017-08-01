@@ -1,0 +1,12 @@
+= simple_form_for @block_captain, url: locals[:url] do |f|
+    = f.error_notification
+    = f.input :created_at, as: :hidden
+    = f.input :updated_at, as: :hidden
+    
+    .form-inputs
+        = f.input :description, required: true, autofocus: true
+        = f.input :user_id, collection: @users, label_method: :last_first, value_method: :id, include_blank: false
+        = f.input :display_order
+
+    .form-actions
+        = f.button :submit, "Save", class: "btn btn-primary"

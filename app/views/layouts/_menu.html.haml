@@ -63,6 +63,8 @@
                                         %a{ href: admin_users_path } Users
                                     %li
                                         %a{ href: admin_mail_groups_path } Mail Groups
+                                    %li
+                                        %a{ href: admin_block_captains_path } Block Captains
                     - if user_signed_in?
                         %li= link_to "Account", edit_user_registration_path
                         %li= link_to "Sign Out", destroy_user_session_path, method: :delete

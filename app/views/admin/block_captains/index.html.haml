@@ -1,4 +1,4 @@
-.col-md-9
+.col-md-12
     %h2 Butler Creek Block Captains
 
     %table.table
@@ -8,6 +8,7 @@
                 %th Name
                 %th Email
                 %th Phone
+                %th Actions
 
         %tbody
             - @block_captains.each do |captain|
@@ -16,3 +17,8 @@
                     %td= captain.user.first_last if captain.user
                     %td= captain.user.email if captain.user
                     %td.wrap= captain.user.phone if captain.user
+                    %td
+                        = link_to edit_admin_block_captain_path(captain), title: "Edit", class: "btn btn-primary btn-xs" do
+                            %span.glyphicon.glyphicon-edit
+                        = link_to admin_block_captain_path(captain), method: :delete, title: "Delete", class: "btn btn-danger btn-xs", data: { confirm: 'Are you sure?' } do
+                            %span.glyphicon.glyphicon-trash

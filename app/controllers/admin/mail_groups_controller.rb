@@ -1,6 +1,6 @@
 class Admin::MailGroupsController < ApplicationController
   before_action :set_mail_group, only: [:edit, :update, :destroy, :add_members, :remove_members]
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
   
   def index
     authorize_action_for(MailGroup)
