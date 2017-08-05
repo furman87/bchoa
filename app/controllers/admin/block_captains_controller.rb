@@ -31,7 +31,7 @@ class Admin::BlockCaptainsController < ApplicationController
   def update
     authorize_action_for(@block_captain)
     if @block_captain.update(block_captain_params)
-      redirect_to admin_block_captains_path, notice: 'Mail group was successfully updated.'
+      redirect_to admin_block_captains_path, notice: 'Block captain was successfully updated.'
     else
       render :edit
     end

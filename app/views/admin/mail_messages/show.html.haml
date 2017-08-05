@@ -1,6 +1,7 @@
-.col-md-9
-    %h2= @mail_message.title
-    %div= @mail_message.body
-    %ul
-        - @mail_message.mail_message_groups do |g|
-            %li= g.name
+.row
+    .col-md-9
+        %h2= @mail_message.title
+        %div= @mail_message.body
+        %ul
+            - @mail_message.mail_message_groups do |g|
+                %li= g.name

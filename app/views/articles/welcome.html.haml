@@ -1,6 +1,9 @@
-.col-md-9
-    %h2.page-header Welcome to Butler Creek
-    %p Butler Creek is located in Kennesaw, GA, about 30 minutes north of downtown Atlanta, close to I-75 and I-575, the mountains, the beach, and everything in between. We are a swim-tennis community of 144 homes located between Cobb Parkway and Stilesboro Road, convenient to shopping, the new Atlanta Braves Stadium, lakes, and the mountains. Butler Creek is a very social community, a true neighborhood where neighbors know neighbors, and people look out for one another.
+.row
+    .col-md-9
+        %h2.page-header Welcome to Butler Creek
+.row
+    .col-md-9
+        %p Butler Creek is located in Kennesaw, GA, about 30 minutes north of downtown Atlanta, close to I-75 and I-575, the mountains, the beach, and everything in between. We are a swim-tennis community of 144 homes located between Cobb Parkway and Stilesboro Road, convenient to shopping, the new Atlanta Braves Stadium, lakes, and the mountains. Butler Creek is a very social community, a true neighborhood where neighbors know neighbors, and people look out for one another.
 
-    - @articles.each do |article|
-        = render partial: "article", locals: {article: article}
+        - @articles.each do |article|
+            = render partial: "article", locals: {article: article}

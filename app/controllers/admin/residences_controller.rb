@@ -50,6 +50,6 @@ class Admin::ResidencesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def residence_params
-      params.require(:residence).permit(:street_number, :lot, :block, :purchase_year)
+      params.require(:residence).permit(:street_number, :lot, :block, :purchase_year, :block_captain_id)
     end
 end

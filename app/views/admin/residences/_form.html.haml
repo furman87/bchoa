@@ -9,6 +9,8 @@
             = f.input :lot, wrapper_html: {class: "col-md-4"}
             = f.input :block, wrapper_html: {class: "col-md-4"}
             = f.input :purchase_year, wrapper_html: {class: "col-md-4"}
+        .form-inputs.row
+            = f.input :block_captain_id, collection: BlockCaptain.joins(:user).includes(:user).order("users.last_name, users.first_name"), label_method: -> (bc) {bc.user.first_last}, value_method: -> (bc) {bc.user.id}, include_blank: false, wrapper_html: {class: "col-md-4"}
 
     .form-actions
         = f.button :submit, class: "btn btn-primary"

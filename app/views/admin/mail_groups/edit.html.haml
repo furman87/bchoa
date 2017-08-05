@@ -1,51 +1,9 @@
 .row
-    %h1 Editing Mail Group - #{@mail_group.name}
-
+    .col-md-12.admin
+        %h1 Editing Mail Group - #{@mail_group.name}
 .row
     .col-md-5.admin
-        =form_tag add_members_admin_mail_groups_path, method: :put do
-            =hidden_field_tag :id, @mail_group.id
-            %h3 Residents Not In Group
-            %button.btn.btn-primary.btn-sm.admin-header{type: "submit"} Add Selected to Group
-            %hr
-            %table.table.residents
-                %thead
-                    %tr
-                        %th
-                            =check_box_tag ""
-                        %th User
-                %tbody
-                    - @non_members.each do |user|
-                        %tr
-                            %td
-                                =check_box_tag "member_ids[]", user.id
-                            %td
-                                =user.last_first
-                                %br
-                                =user.residences.first.address
-                                %br
-                                =user.email
+        = render 'form', locals: {url: add_members_admin_mail_groups_path, header: "Residents Not In Group", button_text: "Add Selected to Group", data: @non_members}
     .col-md-1
     .col-md-5.admin
-        =form_tag remove_members_admin_mail_groups_path, method: :put do
-            =hidden_field_tag :id, @mail_group.id
-            %h3 Residents In Group
-            %button.btn.btn-primary.btn-sm.admin-header{type: "submit"} Remove Selected from Group
-            %hr
-            %table.table.residents
-                %thead
-                    %tr
-                        %th
-                            =check_box_tag ""
-                        %th User
-                %tbody
-                    - @members.each do |user|
-                        %tr
-                            %td
-                                =check_box_tag "member_ids[]", user.id
-                            %td
-                                =user.last_first
-                                %br
-                                =user.residences.first.address
-                                %br
-                                =user.email
+        = render 'form', locals: {url: remove_members_admin_mail_groups_path, header: "Residents In Group", button_text: "Remove Selected from Group", data: @members}

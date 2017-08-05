@@ -1,3 +1,6 @@
-.col-md-9
-    %h2 Butler Creek Newsletters
-    = render partial: "articles_list", locals: {articles: @articles, document_type: 'newsletter'}
+.row
+    .col-md-9
+        %h2 Butler Creek Newsletters
+.row
+    .col-md-9
+        = render partial: "articles_list", locals: {articles: @articles, document_type: 'newsletter'}

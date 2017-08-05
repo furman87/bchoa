@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170611170232) do
+ActiveRecord::Schema.define(version: 20170802143531) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,9 +104,12 @@ ActiveRecord::Schema.define(version: 20170611170232) do
     t.integer  "lot"
     t.integer  "block"
     t.integer  "purchase_year"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "block_captain_id"
   end
+
+  add_index "residences", ["block_captain_id"], name: "index_residences_on_block_captain_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"

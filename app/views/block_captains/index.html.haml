@@ -1,18 +1,20 @@
-.col-md-9
-    %h2 Butler Creek Block Captains
-
-    %table.table
-        %thead
-            %tr
-                %th Description
-                %th Name
-                %th Email
-                %th Phone
-
-        %tbody
-            - @block_captains.each do |captain|
+.row
+    .col-md-12
+        %h2 Butler Creek Block Captains
+.row
+    .col-md-12
+        %table.table
+            %thead
                 %tr
-                    %td= captain.description
-                    %td= captain.user.first_last if captain.user
-                    %td= captain.user.email if captain.user
-                    %td.wrap= captain.user.phone if captain.user
+                    %th Description
+                    %th Name
+                    %th Email
+                    %th Phone
+
+            %tbody
+                - @block_captains.each do |captain|
+                    %tr
+                        %td= captain.description
+                        %td= captain.user.first_last if captain.user
+                        %td= captain.user.email if captain.user
+                        %td.wrap= captain.user.phone if captain.user

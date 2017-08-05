@@ -1,31 +1,33 @@
-.col-md-12.admin
-    %h1 User Administration
-    = link_to new_admin_user_path, title: "Add", class: "btn btn-primary btn-sm admin-header" do
-        %span.glyphicon.glyphicon-plus
+.row
+    .col-md-12.admin
+        %h1 User Administration
+        = link_to new_admin_user_path, title: "Add", class: "btn btn-primary btn-sm admin-header" do
+            %span.glyphicon.glyphicon-plus
 
-    -# %table.table.table-striped
-    %table.table#residents-list
-        %thead
-            %tr
-                %th Name
-                %th Email
-                %th Phone
-                - if @can_update_user
-                    %th Actions
-
-        %tbody
-            - @users.each do |user|
+.row
+    .col-md-12
+        %table.table#residents-list
+            %thead
                 %tr
-                    %td= user.last_first
-                    %td.wrap= user.email
-                    %td.wrap= user.phone
+                    %th Name
+                    %th Email
+                    %th Phone
                     - if @can_update_user
-                        %td
-                            = link_to edit_admin_user_path(user), title: "Edit", class: "btn btn-primary btn-sm" do
-                                %span.glyphicon.glyphicon-edit
-                            = link_to admin_user_path(user), method: :delete, title: "Delete", class: "btn btn-danger btn-sm", data: { confirm: 'Are you sure?' } do
-                                %span.glyphicon.glyphicon-trash
-                            = link_to admin_user_password_path(user), title: "Reset Password", class: "btn btn-warning btn-sm", data: { confirm: 'Are you sure?' } do
-                                %span.glyphicon.glyphicon-share-alt
-                    - else
-                        %td
+                        %th Actions
+
+            %tbody
+                - @users.each do |user|
+                    %tr
+                        %td= user.last_first
+                        %td.wrap= user.email
+                        %td.wrap= user.phone
+                        - if @can_update_user
+                            %td
+                                = link_to edit_admin_user_path(user), title: "Edit", class: "btn btn-primary btn-sm" do
+                                    %span.glyphicon.glyphicon-edit
+                                = link_to admin_user_path(user), method: :delete, title: "Delete", class: "btn btn-danger btn-sm", data: { confirm: 'Are you sure?' } do
+                                    %span.glyphicon.glyphicon-trash
+                                = link_to admin_user_password_path(user), title: "Reset Password", class: "btn btn-warning btn-sm", data: { confirm: 'Are you sure?' } do
+                                    %span.glyphicon.glyphicon-share-alt
+                        - else
+                            %td

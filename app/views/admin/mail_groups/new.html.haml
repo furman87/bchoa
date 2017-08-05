@@ -1,8 +1,8 @@
-.col-md-6.admin
-    .row
+.row
+    .col-md-6.admin
         %h1 New Mail Group
-
-    .row
+.row
+    .col-md-6
         = simple_form_for @mail_group, url: admin_mail_groups_path do |f|
             = f.error_notification
 

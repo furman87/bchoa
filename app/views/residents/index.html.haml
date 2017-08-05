@@ -1,26 +1,28 @@
-.col-md-12
-    %h2 Butler Creek Residents
+.row
+    .col-md-12
+        %h2 Butler Creek Residents
 
-    %table.table#residents-list
-        %thead
-            %tr
-                %th Name
-                %th Address
-                %th Email
-                %th Phone
-                %th Year
-                - if @can_update_user
-                    %th
-        %tbody
-            - @residences.each do |residence|
+.row
+    .col-md-12
+        %table.table#residents-list
+            %thead
                 %tr
-                    %td= residence.user_names
-                    %td= residence.address
-                    %td.wrap<= residence.user_emails
-                    %td.wrap<= residence.user_phones(@can_display_private)
-                    %td= residence.purchase_year
+                    %th Name
+                    %th Address
+                    %th Email
+                    %th Phone
+                    %th Year
                     - if @can_update_user
-                        %td
-                            = link_to admin_residence_path(residence.id), title: "Edit", class: "btn btn-primary btn-xs admin-header" do
-                                %span.glyphicon.glyphicon-edit
-                            
+                        %th
+            %tbody
+                - @residences.each do |residence|
+                    %tr
+                        %td= residence.user_names
+                        %td= residence.address
+                        %td.wrap<= residence.user_emails
+                        %td.wrap<= residence.user_phones(@can_display_private)
+                        %td= residence.purchase_year
+                        - if @can_update_user
+                            %td
+                                = link_to admin_residence_path(residence.id), title: "Edit", class: "btn btn-primary btn-xs admin-header" do
+                                    %span.glyphicon.glyphicon-edit

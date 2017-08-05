@@ -1,0 +1,22 @@
+=form_tag locals[:url], method: :put do
+    =hidden_field_tag :id, @mail_group.id
+    %h3= locals[:header]
+    %button.btn.btn-primary.btn-sm.admin-header{type: "submit"}= locals[:button_text]
+    %hr
+    %table.table.residents
+        %thead
+            %tr
+                %th
+                    =check_box_tag ""
+                %th User
+        %tbody
+            - locals[:data].each do |user|
+                %tr
+                    %td
+                        =check_box_tag "member_ids[]", user.id
+                    %td
+                        =user.last_first
+                        %br
+                        =user.residences.first.address
+                        %br
+                        =user.email

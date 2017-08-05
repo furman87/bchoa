@@ -13,6 +13,7 @@
     = javascript_include_tag 'application'
     = csrf_meta_tags
     = stylesheet_link_tag "https://fonts.googleapis.com/css?family=Oswald"
+    = stylesheet_link_tag "https://fonts.googleapis.com/css?family=Italianno"
 %body
     #wrap
         = render "layouts/menu"
@@ -22,6 +23,6 @@
             .row
                 - flash.each do |name, msg|
                     = content_tag :div, msg, class: "alert alert-#{name == 'notice' ? 'success' : 'danger'}"
-                = yield
+            = yield
 
     = render "layouts/footer"

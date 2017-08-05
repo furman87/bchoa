@@ -1,18 +1,20 @@
-.col-md-9
-    %h2 Butler Creek Board
-
-    %table.table
-        %thead
-            %tr
-                %th Description
-                %th Name
-                %th Email
-                %th Phone
-
-        %tbody
-            - @board_members.each do |member|
+.row
+    .col-md-9
+        %h2 Butler Creek Board
+.row
+    .col-md-9
+        %table.table
+            %thead
                 %tr
-                    %td= member.description
-                    %td= member.user.first_last
-                    %td= member.user.email
-                    %td.wrap= member.user.phone
+                    %th Description
+                    %th Name
+                    %th Email
+                    %th Phone
+
+            %tbody
+                - @board_members.each do |member|
+                    %tr
+                        %td= member.description
+                        %td= member.user.first_last if member.user
+                        %td= member.user.email if member.user
+                        %td.wrap= member.user.phone if member.user
