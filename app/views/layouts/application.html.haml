@@ -21,8 +21,9 @@
         
         .container
             .row
-                - flash.each do |name, msg|
-                    = content_tag :div, msg, class: "alert alert-#{name == 'notice' ? 'success' : 'danger'}"
+                .col-md-12
+                    - flash.each do |name, msg|
+                        = content_tag :div, msg, class: "alert alert-#{name == 'notice' ? 'success' : 'danger'}"
             = yield
 
     = render "layouts/footer"
