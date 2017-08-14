@@ -5,7 +5,7 @@ class Admin::UsersController < ApplicationController
 
   def index
     authorize_action_for(User)
-    @users = User.order(:last_name, :first_name)
+    @users = User.includes(:residences).joins(:residences).order(:last_name, :first_name)
     @can_update_user = current_user.can_update?(User)
   end
 

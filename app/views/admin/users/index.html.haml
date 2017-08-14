@@ -9,18 +9,21 @@
         %table.table#residents-list
             %thead
                 %tr
-                    %th Name
-                    %th Email
-                    %th Phone
+                    %th User
                     - if @can_update_user
                         %th Actions
 
             %tbody
                 - @users.each do |user|
                     %tr
-                        %td= user.last_first
-                        %td.wrap= user.email
-                        %td.wrap= user.phone
+                        %td
+                            =user.last_first
+                            %br
+                            =user.residences.first.address
+                            %br
+                            =user.email
+                            %br
+                            =user.phone
                         - if @can_update_user
                             %td
                                 = link_to edit_admin_user_path(user), title: "Edit", class: "btn btn-primary btn-sm" do
@@ -29,5 +32,3 @@
                                     %span.glyphicon.glyphicon-trash
                                 = link_to admin_user_password_path(user), title: "Reset Password", class: "btn btn-warning btn-sm", data: { confirm: 'Are you sure?' } do
                                     %span.glyphicon.glyphicon-share-alt
-                        - else
-                            %td

@@ -1,0 +1,12 @@
+- residence.users.each do |user|
+    - unless user.email.include? ENV['ignore_listing_domain']
+        %span.glyphicon.glyphicon-envelope.contact-info-glyph
+        %span= user.email
+        %span.user-info= "(#{user.first_name})" unless residence.users.count == 1
+        %br
+- residence.users.each do |user|
+    - if user.phone.present?
+        %span.glyphicon.glyphicon-earphone.contact-info-glyph
+        %span= user.phone
+        %span.user-info= "(#{user.first_name})" unless residence.users.count == 1
+        %br

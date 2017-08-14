@@ -109,6 +109,23 @@ ul.dropdown-menu {
   display: block;
 }
 
+.user-info {
+  font-size: 0.85em;
+  font-style: italic;
+  color: #888;
+}
+
+.contact-info-glyph {
+  // font-size: 0.85em;
+  // color: #888;
+  padding-right: 3px;
+}
+
+.name-listing {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
 .article-title {
   margin-top: 40px;
 }

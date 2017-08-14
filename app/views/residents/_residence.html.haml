@@ -1,0 +1,5 @@
+%span.name-listing= residence.user_names
+%br
+%span= residence.address
+%br
+%span= "#{pluralize_without_count(residence.users.count, 'Resident')} since #{residence.purchase_year}"
