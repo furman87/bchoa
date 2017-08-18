@@ -115,6 +115,30 @@ ul.dropdown-menu {
   color: #888;
 }
 
+@media screen and (max-width: 600px) {
+  table.collapsed thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  table tr.collapsed {
+    border-top: 2px solid #ddd;
+    display: block;
+  }
+
+  table td.collapsed {
+    border-top: 0 !important;
+    display: block;
+    text-align: left;
+  }
+}
+
 .contact-info-glyph {
   // font-size: 0.85em;
   // color: #888;
