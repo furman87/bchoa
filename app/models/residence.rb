@@ -30,7 +30,7 @@ class Residence < ActiveRecord::Base
       if index == 0
         return_name += r.user.last_first
       else
-        return_name += " & " + (r.user.last_name == test_last_name ? r.user.first_name : r.user.last_first)
+        return_name += " & " + (r.user.last_name == test_last_name ? r.user.first_name : r.user.first_last)
       end
       test_last_name = r.user.last_name
     end
