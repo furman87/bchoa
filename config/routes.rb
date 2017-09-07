@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :residence_users
     resources :users
     resources :block_captains
+    resources :pages
     resources :mail_groups do
       collection do
         put 'add_members'
