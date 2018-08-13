@@ -72,18 +72,29 @@ sudo -H -u vagrant bash -i -c 'rbenv rehash'
 echo '--------------------------------------------'
 echo 'Installing ImageMagick...'
 echo '--------------------------------------------'
-sudo apt-get install libpng12-dev libglib2.0-dev zlib1g-dev libbz2-dev libtiff4-dev libjpeg8-devm
-mkdir ~/src
-cd ~/src
-mkdir ImageMagick
-wget http://www.imagemagick.org/download/ImageMagick.tar.gz
-tar -xzvf ImageMagick.tar.gz -C ImageMagick --strip-components 1
-cd ImageMagick
-#./configure
-./configure '--with-png=yes' '--with-jpeg=yes' '--with-jp2=yes'
-make
-sudo make install
-sudo ldconfig /usr/local/lib
+# sudo apt-get install libpng12-dev libglib2.0-dev zlib1g-dev libbz2-dev libtiff4-dev libjpeg8-devm -y
+# mkdir ~/src
+# cd ~/src
+# mkdir ImageMagick
+# wget http://www.imagemagick.org/download/ImageMagick.tar.gz
+# tar -xzvf ImageMagick.tar.gz -C ImageMagick --strip-components 1
+# cd ImageMagick
+# #./configure
+# ./configure '--with-png=yes' '--with-jpeg=yes' '--with-jp2=yes'
+# make
+# sudo make install
+# sudo ldconfig /usr/local/lib
+
+# newer make instructions: 2017-12-17
+# mkdir ~/src
+# cd ~/src
+# wget ftp://ftp.imagemagick.org/pub/ImageMagick/ImageMagick.tar.gz
+# tar xvfz ImageMagick.tar.gz
+# cd ImageMagick-*
+# ./configure --disable-shared
+# make
+# sudo make install
+# if no jpeg support, install libjpeg62 (sudo apt-get install libjpeg62) and possibly libjpeg62-dev
 
 echo '--------------------------------------------'
 echo 'Installing Postgres...'

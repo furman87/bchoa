@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170802143531) do
+ActiveRecord::Schema.define(version: 20180801012752) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20170802143531) do
     t.boolean  "spouse"
     t.boolean  "include_last_name"
     t.date     "term_end"
+    t.string   "email"
   end
 
   create_table "item_assets", force: :cascade do |t|
@@ -86,6 +87,17 @@ ActiveRecord::Schema.define(version: 20170802143531) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "pages", force: :cascade do |t|
+    t.string   "path"
+    t.string   "include_tags"
+    t.string   "title"
+    t.text     "body"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "pages", ["path"], name: "index_pages_on_path", using: :btree
 
   create_table "residence_users", force: :cascade do |t|
     t.integer "residence_id"

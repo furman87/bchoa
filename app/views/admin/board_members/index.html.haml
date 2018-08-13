@@ -1,0 +1,28 @@
+.row
+    .col-md-12.admin
+        %h3 Butler Creek Board Members
+        = link_to new_admin_board_member_path, title: "Add", class: "btn btn-primary btn-xs admin-header" do
+            %span.glyphicon.glyphicon-plus
+.row
+    .col-md-12.admin
+        %table.table
+            %thead
+                %tr
+                    %th Description
+                    %th Name
+                    %th Email
+                    %th Phone
+                    %th Actions
+
+            %tbody
+                - @board_members.each do |board_member|
+                    %tr
+                        %td= board_member.description
+                        %td= board_member.user.first_last if board_member.user
+                        %td= board_member.email.blank? ? board_member.user.email : board_member.email if board_member.user
+                        %td.wrap= board_member.user.phone if board_member.user
+                        %td
+                            = link_to edit_admin_board_member_path(board_member), title: "Edit", class: "btn btn-primary btn-xs" do
+                                %span.glyphicon.glyphicon-edit
+                            = link_to admin_board_member_path(board_member), method: :delete, title: "Delete", class: "btn btn-danger btn-xs", data: { confirm: 'Are you sure you want to delete this board member?' } do
+                                %span.glyphicon.glyphicon-trash
