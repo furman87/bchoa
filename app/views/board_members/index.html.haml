@@ -16,5 +16,5 @@
                     %tr
                         %td= member.description
                         %td= member.user.first_last if member.user
-                        %td= member.user.email if member.user
+                        %td= member.email.blank? ? member.user.email : member.email if member.user
                         %td.wrap= member.user.phone if member.user
