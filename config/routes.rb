@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'acc_requests/new'
+
+  get 'acc_requests/edit'
+
+  get 'acc_requests/create'
+
+  get 'acc_requests/update'
+
   root 'articles#welcome'
   
   namespace :admin do
